@@ -4,41 +4,22 @@
 {% block title %}{% trans "Services" %} | Zeniti{% endblock %}
 
 {% block content %}
-<!-- ============================================================
-     🟢 NEURAL SYNAPSE BANNER — Services Hero
-     ============================================================ -->
+<!-- Neural Synapse Banner with Estimator title overlay -->
 <div class="neural-banner">
     <canvas id="neural-canvas"></canvas>
     <div class="neural-overlay">
-        <h2>{% trans "Services" %}</h2>
-        <p>{% trans "My expertise for your business success" %}</p>
+        <h2>{% trans "Estimate Project Scope" %}</h2>
+        <p>{% trans "Answer two simple questions and get an estimate in 1 second." %}</p>
     </div>
 </div>
 
 <section class="fade-in">
     <div class="container">
-        <div class="grid grid-2">
-            {% for service in services %}
-            <div class="service-card">
-                <div class="card-icon">
-                    <i data-lucide="{{ service.icon }}"></i>
-                </div>
-                <h3>{{ service.title }}</h3>
-                <p style="color: var(--text-secondary); margin-top: 12px;">{{ service.description }}</p>
-            </div>
-            {% empty %}
-            <p>{% trans "No services added yet." %}</p>
-            {% endfor %}
-        </div>
 
-        <!-- Estimator Section -->
-        <div style="margin-top: 80px; padding-top: 80px; border-top: 1px solid var(--border-color);">
-            <div class="section-head">
-                <h2>{% trans "Estimate Project Scope" %}</h2>
-                <p class="text-secondary" style="color:var(--text-secondary);">{% trans "Answer two simple questions and get an estimate in 1 second." %}</p>
-            </div>
+        <!-- ⚡ ESTIMATOR FORM -->
+        <div style="margin-bottom: 40px;">
             
-            <div style="max-width: 600px; margin: 0 auto; background: var(--card-bg); padding: 32px; border: 1px solid var(--border-color); border-radius: 16px;">
+            <div style="max-width: 600px; margin: 0 auto; background: var(--card-bg); padding: 32px; border: 1px solid rgba(230,57,70,0.2); border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.3);">
                 <form hx-post="{% url 'estimate_service' %}" hx-target="#estimator-result" hx-swap="innerHTML">
                     {% csrf_token %}
                     <div class="form-group">
@@ -70,6 +51,27 @@
                 </form>
                 
                 <div id="estimator-result"></div>
+            </div>
+        </div>
+
+        <!-- 🃏 Services Grid -->
+        <div style="border-top: 1px solid var(--border-color); padding-top: 40px;">
+            <div class="section-head">
+                <h2>{% trans "Services" %}</h2>
+                <p style="color:var(--text-secondary);">{% trans "My expertise for your business success" %}</p>
+            </div>
+            <div class="grid grid-2">
+                {% for service in services %}
+                <div class="service-card">
+                    <div class="card-icon">
+                        <i data-lucide="{{ service.icon }}"></i>
+                    </div>
+                    <h3>{{ service.title }}</h3>
+                    <p style="color: var(--text-secondary); margin-top: 12px;">{{ service.description }}</p>
+                </div>
+                {% empty %}
+                <p>{% trans "No services added yet." %}</p>
+                {% endfor %}
             </div>
         </div>
 

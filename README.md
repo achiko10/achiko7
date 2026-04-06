@@ -1,74 +1,100 @@
-# Zeniti Portfolio 🚀
+# Zeniti: High-Precision Full-Stack Portfolio 🚀
 
-**Zeniti** is a high-end, dynamic full-stack developer portfolio and service booking platform built with Django. It features a hyper-precision hacking aesthetic, real-time Telegram integration, a native appointment calendar, anti-spam protections, and robust content management capabilities.
+[![Django](https://img.shields.io/badge/Framework-Django%204.2-092E20?style=for-the-badge&logo=django&logoColor=white)](https://www.djangoproject.com/)
+[![Aesthetic](https://img.shields.io/badge/Aesthetic-Hyper--Precision-red?style=for-the-badge)](https://zeniti.tech)
+[![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](LICENSE)
 
-## 🌟 Key Features
+**Zeniti** is a professional-grade, B2B-focused developer portfolio and service ecosystem. It combines a striking "Cyber-Hacker" aesthetic with robust automation, real-time notifications, and high-precision UI/UX design.
 
-- **Hacker/Minimal Aesthetics:** Striking dark mode themes (Default & Hacker) with responsive design and subtle glow effects.
-- **Dynamic Content Management:** Easily manage FAQs, Projects, Services, and incoming Bookings directly from the Django Admin Panel.
-- **Native Appointment Booking:** Interactive calendar for clients to book available time slots directly.
-- **Telegram Bot Integration:** Get instant notifications on your phone whenever a client messages or books an appointment.
-- **Anti-Spam Security:** Invisible Honeypot fields implemented to block bots without hurting User Experience.
-- **Production Ready:** Pre-configured for deployment (Whitenoise for static files, Secure Environment Variables, custom 404/500 pages).
+---
+
+## 💎 Project Highlights
+
+- **🎭 Dual-Theme System:** Dynamic toggle between *Default (Sleek Dark)* and *Hacker (Matrix-Glow)* modes.
+- **📅 Smart Booking:** Native appointment calendar with real-time availability validation.
+- **📊 Scope Estimator:** Interactive tool for clients to calculate project timelines and budgets.
+- **🤖 Telegram Integration:** Real-time lead notifications and appointment management via safe-string Telegram Bot API.
+- **🔒 Security First:** Invisible Honeypot anti-spam, CSRF protection, and strictly validated i18n localization.
+- **⚡ Performance:** Optimized with HTMX for partial page updates and Whitenoise for high-speed static asset delivery.
+
+---
+
+## 🏗 System Architecture
+
+```mermaid
+graph TD
+    User((User)) -->|HTMX/Request| Django[Django Backend]
+    Django -->|ORM| DB[(SQLite/Postgres)]
+    Django -->|Post| TG[Telegram Bot API]
+    TG -->|Notification| Admin[Admin Phone]
+    Admin -->|Command| TG
+    Django -->|Static| WN[Whitenoise]
+    WN -->|Compressed| User
+```
 
 ---
 
 ## 🛠 Tech Stack
 
-- **Backend:** Python + Django
-- **Frontend:** Vanilla JavaScript, HTMX (for dynamic forms), HTML5, CSS3 (Glassmorphism & Custom Themes)
-- **Database:** SQLite (default) / Configurable for PostgreSQL
-- **Integrations:** Telegram Bot API
-- **Deployment Utilities:** Whitenoise
+- **Backend:** Python 3.13 + Django 4.2 (LTS)
+- **Frontend:** HTML5, CSS3 (Glassmorphism), Vanilla JavaScript, [HTMX](https://htmx.org/)
+- **API:** Telegram Bot API
+- **Testing:** Django TestCase + Unittest (Mocking)
+- **i18n:** Built-in Django Internationalization (EN/KA)
 
 ---
 
-## 🚀 Local Setup Instructions
+## 🚀 Getting Started
 
-1. **Clone the repository:**
+### Prerequisites
+- Python 3.10+
+- Pipenv or venv
+
+### Installation
+
+1. **Clone & Navigate:**
    ```bash
    git clone https://github.com/achiko10/achiko7.git
    cd achiko7
    ```
 
-2. **Create a Virtual Environment:**
+2. **Environment Setup:**
    ```bash
    python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
-
-3. **Install Dependencies:**
-   ```bash
+   source venv/bin/activate # Windows: venv\Scripts\activate
    pip install -r requirements.txt
    ```
 
-4. **Set Environment Variables:**
-   Create a `.env` file (or export in your terminal) with your secrets:
+3. **Environment Variables (`.env`):**
    ```env
-   DJANGO_SECRET_KEY=your_secret_key_here
+   DJANGO_SECRET_KEY=your_key
    DJANGO_DEBUG=True
-   TELEGRAM_BOT_TOKEN=your_bot_token
-   TELEGRAM_CHAT_ID=your_chat_id
+   TELEGRAM_BOT_TOKEN=your_token
+   TELEGRAM_CHAT_ID=your_id
    ```
 
-5. **Run Migrations & Start Server:**
+4. **Initialize & Run:**
    ```bash
    python manage.py migrate
-   python manage.py createsuperuser
+   python manage.py test portfolio.tests # Run the professional test suite
    python manage.py runserver
    ```
 
 ---
 
-## ☁️ Deployment Instructions (PythonAnywhere / VPS)
+## 🧪 Testing
+Professional integrity is maintained through a robust test suite covering:
+- **Models:** Data integrity and unique constraints.
+- **Views:** Route accessibility and template rendering.
+- **Integrations:** Mocked Telegram API calls to ensure zero-failure deployments.
 
-1. Upload your code to the server using `git clone`.
-2. Configure **Environment Variables** securely on your host (ensure `DJANGO_DEBUG=False`).
-3. Set `DJANGO_ALLOWED_HOSTS` to your assigned domain (e.g., `yourdomain.com`).
-4. Run `python manage.py collectstatic` to gather static files using Whitenoise.
-5. Apply migrations: `python manage.py migrate`.
-6. Restart your WSGI server to reflect the changes.
+Run tests: `python manage.py test`
 
 ---
 
-*Designed and Developed by [achiko10]*
+## 📄 License
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+
+---
+
+*Engineered with precision by [achiko10]*

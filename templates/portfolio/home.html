@@ -6,20 +6,52 @@
      HERO SECTION — Rössler Attractor ფონი (წითელი ციკლი)
      ============================================================ -->
 <section class="hero fade-in">
-    <!-- Subtle Glow Background -->
-    <div style="position: absolute; inset: 0; background: radial-gradient(circle at 50% 30%, rgba(230,57,70,0.05) 0%, transparent 60%); pointer-events: none;"></div>
-    
-    <div class="container" style="position:relative;z-index:1;">
-        <h1>{% trans "Zeniti" %}</h1>
-        <h2 style="font-weight:500;font-size:1.4rem;color:var(--text-secondary);margin-bottom:24px;margin-top:16px;">
-            {% trans "Innovative Full-stack & Mobile Solutions" %}
-        </h2>
-        <p style="max-width:580px;margin:0 auto 40px auto;color:var(--text-secondary);font-size:1.05rem;">
-            {% trans "I am achiko10, an experienced developer creating scalable, secure, and user-centric systems." %}
-        </p>
-        <div style="display:flex;gap:16px;justify-content:center;">
-            <a href="{% url 'contact' %}" class="btn btn-primary">{% trans "Contact Me" %}</a>
-            <a href="{% url 'projects' %}" class="btn">{% trans "Projects" %}</a>
+    <!-- 🌐 Extremely subtle grid -->
+    <div class="cyber-grid" style="opacity: 0.4;"></div>
+
+    <div class="container hero-split">
+        <!-- 📝 Left Column: Typography & Actions -->
+        <div class="hero-text-content">
+            <div class="tech-labels">
+                <span class="t-badge">Full-Stack</span>
+                <span class="t-badge">Mobile</span>
+                <span class="t-badge">Scalable</span>
+            </div>
+            
+            <h1 class="hero-title">{% trans "Zeniti" %}</h1>
+            <h2 class="hero-subtitle">
+                {% trans "Innovative Full-stack & Mobile Solutions" %}
+            </h2>
+            <p class="hero-description">
+                {% trans "I am achiko10, an experienced developer creating precision-engineered, scalable, and user-centric systems." %}
+            </p>
+            
+            <div class="hero-actions" style="justify-content: flex-start;">
+                <a href="{% url 'contact' %}" class="btn btn-primary btn-glow">
+                    {% trans "Contact Me" %} <i data-lucide="arrow-right" style="width:18px; margin-left:6px;"></i>
+                </a>
+                <a href="{% url 'projects' %}" class="btn btn-outline">
+                    <i data-lucide="code" style="width:18px; margin-right:6px;"></i> {% trans "Projects" %}
+                </a>
+            </div>
+        </div>
+
+        <!-- 📐 Right Column: Blue Triangle Artifact -->
+        <div class="hero-visual-content">
+            <div class="triangle-artifact">
+                <svg viewBox="0 0 100 110" fill="none" xmlns="http://www.w3.org/2000/svg" class="artifact-svg">
+                    <!-- Glowing core -->
+                    <polygon points="50,15 90,85 10,85" stroke="var(--accent-blue)" stroke-width="2" stroke-linejoin="round" fill="rgba(67, 97, 238, 0.05)"/>
+                    <polygon points="50,22 83,80 17,80" stroke="var(--accent-blue)" stroke-width="1" stroke-linejoin="round" fill="none" opacity="0.4"/>
+                    <!-- Connectivity lines -->
+                    <line x1="50" y1="15" x2="50" y2="45" stroke="var(--accent-blue)" stroke-width="1.5" opacity="0.8"/>
+                    <line x1="10" y1="85" x2="35" y2="65" stroke="var(--accent-blue)" stroke-width="1.5" opacity="0.8"/>
+                    <line x1="90" y1="85" x2="65" y2="65" stroke="var(--accent-blue)" stroke-width="1.5" opacity="0.8"/>
+                    <circle cx="50" cy="53" r="4" fill="var(--accent-blue)"/>
+                </svg>
+            </div>
+            <!-- Shadow to ground the floating object -->
+            <div class="artifact-shadow"></div>
         </div>
     </div>
 </section>
@@ -28,47 +60,47 @@
      MÖBIUS SECTION — პროცესის უსასრულო ციკლი
      ============================================================ -->
 <section class="mobius-section">
-    <div class="container">
-        <div class="mobius-layout">
-            <!-- 🔵 Möbius Canvas -->
-            <div class="mobius-visual">
-                <canvas id="mobius-canvas"></canvas>
-                <div class="mobius-formula">
-                    r⃗(u,v) = ((R + v·cos u/2)cos u, (R + v·cos u/2)sin u, v·sin u/2)
-                </div>
+    <div class="container mobius-layout">
+        <!-- 🔵 Möbius Visual Side -->
+        <div class="mobius-visual">
+            <canvas id="mobius-canvas"></canvas>
+            <div class="mobius-formula">
+                r⃗(u,v) = ((R + v·cos u/2)cos u, (R + v·cos u/2)sin u, v·sin u/2)
             </div>
-            <!-- Process Steps -->
-            <div>
-                <div style="margin-bottom:32px;">
-                    <p style="font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent-blue);font-weight:600;margin-bottom:8px;">
-                        1 cara · 1 borde · ∞ cycle
-                    </p>
-                    <h2 style="font-size:2rem;">{% trans "Our Working Cycle" %}</h2>
-                    <p style="color:var(--text-secondary);margin-top:12px;">
-                        {% trans "Möbius Strip — one surface, one path. Our process works with the same structure." %}
-                    </p>
+        </div>
+
+        <!-- 📝 Process Steps Side -->
+        <div class="mobius-text-content">
+            <div style="margin-bottom:48px;">
+                <p style="font-size:0.8rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent-blue);font-weight:700;margin-bottom:12px;">
+                    1 Surface · 1 Path · ∞ Cycle
+                </p>
+                <h2 style="font-size:2.8rem; line-height:1.2; margin-bottom:16px;">{% trans "Our Working Cycle" %}</h2>
+                <p style="color:var(--text-secondary); font-size:1.1rem; line-height:1.6; max-width:540px;">
+                    {% trans "Möbius Strip — one surface, one path. Our process works with the same structure." %}
+                </p>
+            </div>
+
+            <div class="cycle-steps">
+                <div class="cycle-step">
+                    <div class="step-num">01</div>
+                    <div class="step-info">
+                        <h4>{% trans "Understand & Analyze" %}</h4>
+                        <p>{% trans "Deep study of your business goals, target audience, and competitors." %}</p>
+                    </div>
                 </div>
-                <div class="cycle-steps">
-                    <div class="cycle-step">
-                        <div class="step-num">1</div>
-                        <div>
-                            <h4>{% trans "Understand & Analyze" %}</h4>
-                            <p>{% trans "Deep study of your business goals, target audience, and competitors." %}</p>
-                        </div>
+                <div class="cycle-step">
+                    <div class="step-num">02</div>
+                    <div class="step-info">
+                        <h4>{% trans "Create & Develop" %}</h4>
+                        <p>{% trans "With speed and precision — code that is flexible and scales easily." %}</p>
                     </div>
-                    <div class="cycle-step">
-                        <div class="step-num">2</div>
-                        <div>
-                            <h4>{% trans "Create & Develop" %}</h4>
-                            <p>{% trans "With speed and precision — code that is flexible and scales easily." %}</p>
-                        </div>
-                    </div>
-                    <div class="cycle-step">
-                        <div class="step-num">3</div>
-                        <div>
-                            <h4>{% trans "Launch & Update" %}</h4>
-                            <p>{% trans "Product goes live — and the cycle starts again. We always optimize." %}</p>
-                        </div>
+                </div>
+                <div class="cycle-step">
+                    <div class="step-num">03</div>
+                    <div class="step-info">
+                        <h4>{% trans "Launch & Update" %}</h4>
+                        <p>{% trans "Product goes live — and the cycle starts again. We always optimize." %}</p>
                     </div>
                 </div>
             </div>
@@ -84,69 +116,121 @@
     const canvas = document.getElementById('mobius-canvas');
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
-    let W, H, angle = 0;
+    let W, H;
+    let particles = [];
+    const particleCount = 120;
+    let angleOffset = 0;
 
     function resize() {
-        W = canvas.width  = canvas.offsetWidth;
-        H = canvas.height = canvas.offsetHeight;
+        const dpr = window.devicePixelRatio || 1;
+        W = canvas.width = canvas.offsetWidth * dpr;
+        H = canvas.height = canvas.offsetHeight * dpr;
+        ctx.scale(dpr, dpr);
+        // Normalized internal dimensions for math
+        W /= dpr;
+        H /= dpr;
     }
     window.addEventListener('resize', resize);
     resize();
 
+    class Particle {
+        constructor(u, v) {
+            this.u = u; // angle around the strip
+            this.v = v; // position across the width
+            this.size = Math.random() * 2 + 1;
+            this.speed = Math.random() * 0.005 + 0.002;
+            this.colorAlpha = Math.random() * 0.5 + 0.2;
+        }
+
+        update() {
+            this.u += this.speed;
+            if (this.u > Math.PI * 2) this.u -= Math.PI * 2;
+        }
+
+        draw(cx, cy, R, offset) {
+            const u = this.u + offset;
+            const v = this.v;
+            
+            // Möbius parametric equations
+            const cosU = Math.cos(u);
+            const sinU = Math.sin(u);
+            const cosHalfU = Math.cos(u / 2);
+            const sinHalfU = Math.sin(u / 2);
+
+            // 3D coordinates (projected)
+            const x = (R + v * cosHalfU) * cosU;
+            const y = (R + v * cosHalfU) * sinU;
+            const z = v * sinHalfU;
+
+            // Simple 3D projection to 2D
+            // We use z for scale and opacity
+            const perspective = 0.5 + (z / 80 + 1) / 2; // scale factor
+            const px = cx + x;
+            const py = cy + y * 0.4; // flattening for perspective
+
+            const finalSize = this.size * perspective;
+            const finalAlpha = this.colorAlpha * perspective;
+
+            ctx.beginPath();
+            ctx.arc(px, py, finalSize, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(67, 97, 238, ${finalAlpha})`;
+            ctx.shadowBlur = 8 * perspective;
+            ctx.shadowColor = 'rgba(67, 97, 238, 0.5)';
+            ctx.fill();
+        }
+    }
+
+    // Initialize particles
+    for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle(
+            Math.random() * Math.PI * 2,
+            (Math.random() - 0.5) * 60 // width of the strip
+        ));
+    }
+
     let isVisible = true;
     let animFrame = null;
 
-    function drawMobius() {
+    function render() {
         if (!isVisible) {
             animFrame = null;
             return;
         }
 
         ctx.clearRect(0, 0, W, H);
-        const cx = W/2, cy = H/2;
-        const R = Math.min(W, H) * 0.3;
-        const steps = 200;
+        const cx = W / 2;
+        const cy = H / 2;
+        const R = Math.min(W, H) * 0.32;
 
-        angle += 0.005;
+        angleOffset += 0.002;
 
-        for (let band = -1; band <= 1; band += 0.25) {
-            ctx.beginPath();
-            for (let i = 0; i <= steps; i++) {
-                const u = (i / steps) * Math.PI * 2;
-                const v = band * 0.3;
-                const cosU = Math.cos(u + angle);
-                const sinU = Math.sin(u + angle);
-                const cosH = Math.cos(u/2 + angle/2);
-                const sinH = Math.sin(u/2 + angle/2);
-
-                const px = cx + (R + v * cosH) * cosU;
-                const py = cy + (R + v * cosH) * sinU * 0.45 + v * sinH * 0.5;
-
-                if (i === 0) ctx.moveTo(px, py);
-                else ctx.lineTo(px, py);
-            }
-            const alpha = 0.15 + Math.abs(band) * 0.5;
-            ctx.strokeStyle = `rgba(67,97,238,${alpha})`;
-            ctx.lineWidth = band === 0 ? 2 : 0.8;
-            ctx.stroke();
-        }
-
-        // Glowing center dot
-        const grd = ctx.createRadialGradient(cx, cy, 0, cx, cy, 12);
-        grd.addColorStop(0, 'rgba(67,97,238,0.6)');
-        grd.addColorStop(1, 'rgba(67,97,238,0)');
-        ctx.fillStyle = grd;
+        // Draw connections/lines for structure
         ctx.beginPath();
-        ctx.arc(cx, cy, 12, 0, Math.PI*2);
-        ctx.fill();
+        ctx.lineWidth = 0.5;
+        ctx.strokeStyle = 'rgba(67, 97, 238, 0.05)';
+        for (let j = 0; j < 300; j += 10) {
+            const u = (j / 300) * Math.PI * 2 + angleOffset;
+            const x1 = cx + (R - 30 * Math.cos(u/2)) * Math.cos(u);
+            const y1 = cy + (R - 30 * Math.cos(u/2)) * Math.sin(u) * 0.4;
+            const x2 = cx + (R + 30 * Math.cos(u/2)) * Math.cos(u);
+            const y2 = cy + (R + 30 * Math.cos(u/2)) * Math.sin(u) * 0.4;
+            ctx.moveTo(x1, y1);
+            ctx.lineTo(x2, y2);
+        }
+        ctx.stroke();
 
-        animFrame = requestAnimationFrame(drawMobius);
+        particles.forEach(p => {
+            p.update();
+            p.draw(cx, cy, R, angleOffset);
+        });
+
+        animFrame = requestAnimationFrame(render);
     }
-    
+
     const observer = new IntersectionObserver((entries) => {
         isVisible = entries[0].isIntersecting;
         if (isVisible && !animFrame) {
-            drawMobius();
+            render();
         }
     });
     observer.observe(canvas);

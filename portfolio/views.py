@@ -2,11 +2,16 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from .models import Project, Service, Booking, FAQ, Appointment
 from django.utils.translation import gettext as _
+from django.utils import translation
 from .telegram import send_telegram_message
 from django.utils.html import escape
 from datetime import datetime, timedelta
 
 def home(request):
+    # Force English if no language cookie is set
+    if not request.COOKIES.get('django_language'):
+        translation.activate('en')
+        request.LANGUAGE_CODE = 'en'
     return render(request, 'portfolio/home.html')
 
 def services(request):
