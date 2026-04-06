@@ -51,8 +51,10 @@ class Booking(models.Model):
         return f"{self.name} - {self.service.title if self.service else 'General'}"
 
 class FAQ(models.Model):
-    question = models.CharField(_("Question"), max_length=255)
-    answer = models.TextField(_("Answer"))
+    question = models.CharField(_("კითხვა"), max_length=255)
+    question_en = models.CharField(_("Question (EN)"), max_length=255, blank=True, null=True)
+    answer = models.TextField(_("პასუხი"))
+    answer_en = models.TextField(_("Answer (EN)"), blank=True, null=True)
     order = models.IntegerField(_("რიგითობა"), default=0)
 
     class Meta:

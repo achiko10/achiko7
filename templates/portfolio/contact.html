@@ -6,55 +6,15 @@
 {% block content %}
 <section class="fade-in">
     <div class="container">
-        <div class="section-head">
-            <h2>{% trans "Shall we start together?" %}</h2>
-            <p style="color: var(--text-secondary);">{% trans "Leave us a message or contact me directly" %}</p>
-        </div>
-
-        <div class="grid grid-2" style="max-width: 900px; margin: 0 auto; gap: 32px; align-items: start;">
-            <!-- ⚫ HACKER PANEL — Developer Identity Canvas -->
-            <div class="hacker-panel">
-                <canvas id="hacker-canvas"></canvas>
-                <div class="hacker-panel-content">
-                    <span class="hacker-badge">Full-Stack Developer</span>
-                    <h3>achiko10</h3>
-                    <p>{% trans "Django, React, Mobile — Systems that get the job done. Ready for your next project." %}</p>
-                    <div class="contact-links">
-                        <a href="mailto:achiko.buadze006@ens.tsu.edu.ge" class="contact-link">
-                            <div class="contact-link-icon" style="background:rgba(230,57,70,0.12);color:var(--accent-color);">
-                                <i data-lucide="mail"></i>
-                            </div>
-                            <div>
-                                <div style="font-size:0.8rem;color:var(--text-secondary);">Email</div>
-                                <div style="font-weight:500;font-size:0.9rem;">achiko.buadze006@ens.tsu.edu.ge</div>
-                            </div>
-                        </a>
-                        <a href="https://wa.me/995579166626" target="_blank" class="contact-link">
-                            <div class="contact-link-icon" style="background:rgba(37,211,102,0.12);color:#25d366;">
-                                <i data-lucide="phone"></i>
-                            </div>
-                            <div>
-                                <div style="font-size:0.8rem;color:var(--text-secondary);">WhatsApp</div>
-                                <div style="font-weight:500;font-size:0.9rem;">+995 579 166 626</div>
-                            </div>
-                        </a>
-                        <a href="https://www.linkedin.com/in/achi-mgebrishvili-41b9b8340/" target="_blank" class="contact-link">
-                            <div class="contact-link-icon" style="background:rgba(0,119,181,0.12);color:#0077b5;">
-                                <i data-lucide="linkedin"></i>
-                            </div>
-                            <div>
-                                <div style="font-size:0.8rem;color:var(--text-secondary);">LinkedIn</div>
-                                <div style="font-weight:500;font-size:0.9rem;">Achi Mgebrishvili</div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
+        
+        <!-- 🟢 PHASE 1: MESSAGE FORM — now at the top for maximum engagement -->
+        <div style="margin-bottom: 48px;">
+            <div class="section-head">
+                <h2>{% trans "Send me a message" %}</h2>
+                <p style="color: var(--text-secondary);">{% trans "Leave us a message or contact me directly" %}</p>
             </div>
-
-
-            <!-- Booking Form -->
-            <div style="background: var(--card-bg); padding: 32px; border: 1px solid var(--border-color); border-radius: 16px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);">
-                <h3 style="margin-bottom: 24px; font-size: 1.25rem;">{% trans "Send me a message" %}</h3>
+            
+            <div style="max-width: 700px; margin: 0 auto; background: var(--card-bg); padding: 32px; border: 1px solid var(--border-color); border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.3);">
                 <div id="booking-response">
                     <form hx-post="{% url 'book_service' %}" hx-target="#booking-response" hx-swap="outerHTML">
                         {% csrf_token %}
@@ -89,13 +49,14 @@
             </div>
         </div>
 
-        <div style="margin-top: 80px; padding-top: 80px; border-top: 1px solid var(--border-color);">
+        <!-- 📅 PHASE 2: BOOKING CALENDAR — moved up -->
+        <div style="margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border-color);">
             <div class="section-head">
                 <h2>{% trans "Book a Meeting (Native Calendar)" %}</h2>
-                <p class="text-secondary">{% trans "Choose a date and see available slots." %}</p>
+                <p class="text-secondary" style="color:var(--text-secondary);">{% trans "Choose a date and see available slots." %}</p>
             </div>
             
-            <div style="max-width: 600px; margin: 0 auto; background: var(--card-bg); padding: 32px; border: 1px solid var(--border-color); border-radius: 16px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);">
+            <div style="max-width: 700px; margin: 0 auto; background: var(--card-bg); padding: 32px; border: 1px solid var(--border-color); border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
                 <div id="calendar-response">
                     <form hx-post="{% url 'book_appointment' %}" hx-target="#calendar-response" hx-swap="outerHTML">
                         {% csrf_token %}
@@ -136,8 +97,67 @@
             </div>
         </div>
 
-        <!-- FAQ Section -->
-        <div style="margin-top: 80px; padding-top: 80px; border-top: 1px solid var(--border-color);">
+        <!-- ⚫ PHASE 3: ABOUT / CONTACT INFO — moved lower -->
+        <div style="margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border-color);">
+            <div class="section-head">
+                <h2>{% trans "Quick Contact" %}</h2>
+                <p style="color: var(--text-secondary);">{% trans "Find me on other platforms" %}</p>
+            </div>
+            
+            <div class="grid grid-2" style="max-width: 900px; margin: 0 auto; gap: 32px; align-items: start;">
+                <!-- Hacker Panel Canvas -->
+                <div class="hacker-panel">
+                    <canvas id="hacker-canvas"></canvas>
+                    <div class="hacker-panel-content">
+                        <span class="hacker-badge">Full-Stack Developer</span>
+                        <h3>achiko10</h3>
+                        <p>{% trans "Django, React, Mobile — Systems that get the job done. Ready for your next project." %}</p>
+                    </div>
+                </div>
+
+                <div class="contact-links" style="display: flex; flex-direction: column; gap: 16px;">
+                    <a href="mailto:achiko.buadze006@ens.tsu.edu.ge" class="contact-link">
+                        <div class="contact-link-icon" style="background:rgba(230,57,70,0.12);color:var(--accent-color);">
+                            <i data-lucide="mail"></i>
+                        </div>
+                        <div>
+                            <div style="font-size:0.8rem;color:var(--text-secondary);">Email</div>
+                            <div style="font-weight:500;font-size:0.9rem;">achiko.buadze006@ens.tsu.edu.ge</div>
+                        </div>
+                    </a>
+                    <a href="https://wa.me/995579166626" target="_blank" class="contact-link">
+                        <div class="contact-link-icon" style="background:rgba(37,211,102,0.12);color:#25d366;">
+                            <i data-lucide="phone"></i>
+                        </div>
+                        <div>
+                            <div style="font-size:0.8rem;color:var(--text-secondary);">WhatsApp</div>
+                            <div style="font-weight:500;font-size:0.9rem;">+995 579 166 626</div>
+                        </div>
+                    </a>
+                    <a href="https://www.linkedin.com/in/achi-mgebrishvili-41b9b8340/" target="_blank" class="contact-link">
+                        <div class="contact-link-icon" style="background:rgba(0,119,181,0.12);color:#0077b5;">
+                            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                        </div>
+                        <div>
+                            <div style="font-size:0.8rem;color:var(--text-secondary);">LinkedIn</div>
+                            <div style="font-weight:500;font-size:0.9rem;">Achi Mgebrishvili</div>
+                        </div>
+                    </a>
+                    <a href="https://github.com/achiko10" target="_blank" class="contact-link">
+                        <div class="contact-link-icon" style="background:rgba(255,255,255,0.08);color:var(--text-primary);">
+                             <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                        </div>
+                        <div>
+                            <div style="font-size:0.8rem;color:var(--text-secondary);">GitHub</div>
+                            <div style="font-weight:500;font-size:0.9rem;">achiko10</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- ❓ PHASE 4: FAQ SECTION — at the bottom -->
+        <div style="margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border-color);">
             <div class="section-head">
                 <h2>{% trans "Frequently Asked Questions" %}</h2>
             </div>
@@ -146,11 +166,11 @@
                 {% for faq in faqs %}
                 <details style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; transition: var(--transition);">
                     <summary style="font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-                        {{ faq.question }}
+                        {% if LANGUAGE_CODE == 'en' and faq.question_en %}{{ faq.question_en }}{% else %}{{ faq.question }}{% endif %}
                         <i data-lucide="chevron-down" style="width: 20px; color: var(--text-secondary);"></i>
                     </summary>
                     <p style="margin-top: 16px; color: var(--text-secondary); line-height: 1.6;">
-                        {{ faq.answer }}
+                        {% if LANGUAGE_CODE == 'en' and faq.answer_en %}{{ faq.answer_en }}{% else %}{{ faq.answer }}{% endif %}
                     </p>
                 </details>
                 {% empty %}
