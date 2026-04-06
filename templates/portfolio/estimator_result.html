@@ -1,0 +1,39 @@
+{% load i18n %}
+<div class="estimator-result fade-in" style="background: var(--bg-secondary); padding: 32px; border-radius: 12px; border: 1px solid var(--border-color); margin-top: 24px;">
+    <h3 style="margin-bottom: 16px; color: var(--accent-color); display: flex; align-items: center; gap: 8px;">
+        <i data-lucide="check-circle" style="width: 24px; height: 24px;"></i>
+        {% trans "Your Estimated Scope" %}
+    </h3>
+    
+    <div class="grid grid-2" style="gap: 24px; margin-bottom: 24px;">
+        <div>
+            <span style="display: block; font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 4px;">{% trans "Recommended Service" %}</span>
+            <strong style="font-size: 1.1rem; color: var(--text-primary);">{{ service_name }}</strong>
+        </div>
+        <div>
+            <span style="display: block; font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 4px;">{% trans "Estimated Time" %}</span>
+            <strong style="font-size: 1.1rem; color: var(--text-primary);">{{ time }}</strong>
+        </div>
+    </div>
+    
+    <div style="padding-top: 24px; border-top: 1px solid var(--border-color);">
+        <span style="display: block; font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 4px;">{% trans "Typical Budget Category" %}</span>
+        <strong style="font-size: 1.25rem; color: var(--text-primary);">{{ budget }}</strong>
+        
+        {% if design_note %}
+        <p style="margin-top: 12px; font-size: 0.9rem; color: var(--text-secondary); display: flex; align-items: center; gap: 6px;">
+            <i data-lucide="info" style="width: 16px;"></i> {{ design_note }}
+        </p>
+        {% endif %}
+    </div>
+    
+    <div style="margin-top: 32px; text-align: center;">
+        <a href="{% url 'contact' %}" class="btn btn-primary" style="width: 100%;">
+            {% trans "Let's start the project" %}
+        </a>
+    </div>
+</div>
+
+<script>
+    lucide.createIcons();
+</script>

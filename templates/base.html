@@ -1,0 +1,142 @@
+{% load i18n static %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Zeniti | ზენიტი{% endblock %}</title>
+    <meta name="description" content="Zeniti - High-end Full-stack Developer Portfolio & Services by achiko10.">
+    
+    <!-- Open Graph SEO -->
+    <meta property="og:title" content="{% block og_title %}Zeniti - High-Precision Full-stack Portfolio{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}Experience innovative Web & Mobile solutions built with Django by achiko10.{% endblock %}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta property="og:image" content="{% block og_image %}https://zeniti.tech/static/images/og-image.jpg{% endblock %}">
+    
+    <!-- Google Analytics (Placeholder) -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script> -->
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    
+    <!-- Scripts -->
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container nav-content">
+            <a href="{% url 'home' %}" class="logo">
+                <!-- 🔴 RÖSSLER LOGO: ფორმულის ციკლი — dx/dt, dy/dt, dz/dt -->
+                <svg class="logo-rossler" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+                    <!-- outer orbit ellipse -->
+                    <ellipse class="orbit-path" cx="18" cy="18" rx="15" ry="8" transform="rotate(-20 18 18)"/>
+                    <!-- inner orbit ellipse -->
+                    <ellipse class="orbit-path" cx="18" cy="18" rx="10" ry="14" transform="rotate(40 18 18)" style="animation-delay:-1s;opacity:0.5"/>
+                    <!-- core dot -->
+                    <circle class="orbit-dot" cx="18" cy="18" r="3"/>
+                    <!-- moving particle on orbit -->
+                    <circle class="orbit-dot" cx="30" cy="14" r="1.5" style="opacity:0.8;"/>
+                    <circle class="orbit-dot" cx="10" cy="28" r="1" style="opacity:0.5;"/>
+                </svg>
+                <span>Zeniti</span>
+            </a>
+            
+            <div class="nav-right" id="nav-right">
+                <ul class="nav-links">
+                    <li><a href="{% url 'services' %}" class="{% if request.path == '/services/' %}active{% endif %}">{% trans "Services" %}</a></li>
+                    <li><a href="{% url 'projects' %}" class="{% if request.path == '/projects/' %}active{% endif %}">{% trans "Projects" %}</a></li>
+                    <li><a href="{% url 'contact' %}" class="{% if request.path == '/contact/' %}active{% endif %}">{% trans "Contact" %}</a></li>
+                </ul>
+
+                <div class="nav-controls" style="display: flex; gap: 20px; align-items: center;">
+                    <!-- Theme Switcher -->
+                    <div class="theme-switcher">
+                        <div class="theme-dot dot-default" onclick="setTheme('default')" title="Default"></div>
+                        <div class="theme-dot dot-hacker" onclick="setTheme('hacker')" title="Hacker"></div>
+                    </div>
+
+                    <div class="lang-switcher">
+                        <form action="{% url 'set_language' %}" method="post" style="display:inline;">
+                            {% csrf_token %}
+                            <input name="next" type="hidden" value="{{ request.path }}">
+                            <button name="language" value="ka" class="lang-btn {% if LANGUAGE_CODE == 'ka' %}active{% endif %}">KA</button>
+                            <button name="language" value="en" class="lang-btn {% if LANGUAGE_CODE == 'en' %}active{% endif %}">EN</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu" style="display: none; background: none; border: none; color: var(--text-primary); cursor: pointer;">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer style="padding: 60px 0; border-top: 1px solid var(--border-color); text-align: center; color: var(--text-secondary); background: var(--bg-secondary);">
+        <div class="container">
+            <div class="footer-links">
+                <a href="mailto:achiko.buadze006@ens.tsu.edu.ge"><i data-lucide="mail"></i> achiko.buadze006@ens.tsu.edu.ge</a>
+                <a href="tel:+995579166626"><i data-lucide="phone"></i> +995 579 166 626</a>
+                <a href="https://www.linkedin.com/in/achi-mgebrishvili-41b9b8340/" target="_blank"><i data-lucide="linkedin"></i> LinkedIn</a>
+                <a href="https://github.com/achiko10" target="_blank"><i data-lucide="github"></i> GitHub</a>
+            </div>
+            <p>&copy; 2026 Zeniti. {% trans "Developer & Manager" %}: achiko10</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/995579166626" class="wa-float" target="_blank" title="{% trans 'Message us on WhatsApp' %}">
+        <svg viewBox="0 0 24 24" width="32" height="32" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+    </a>
+
+    <script>
+        lucide.createIcons();
+        
+        // Theme logic
+        function setTheme(theme) {
+            document.body.setAttribute('data-theme', theme);
+            localStorage.setItem('zeniti-theme', theme);
+            
+            // Update active dot
+            document.querySelectorAll('.theme-dot').forEach(dot => {
+                dot.classList.remove('active');
+            });
+            const activeDot = document.querySelector(`.dot-${theme}`);
+            if (activeDot) activeDot.classList.add('active');
+        }
+
+        // Apply theme on load
+        const savedTheme = localStorage.getItem('zeniti-theme') || 'default';
+        setTheme(savedTheme);
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+        });
+
+        // Mobile menu toggle
+        const toggleBtn = document.getElementById('mobile-menu-toggle');
+        const navRight = document.getElementById('nav-right');
+        toggleBtn.addEventListener('click', () => {
+            navRight.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

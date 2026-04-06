@@ -1,0 +1,157 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+
+{% block title %}{% trans "Services" %} | Zeniti{% endblock %}
+
+{% block content %}
+<!-- ============================================================
+     🟢 NEURAL SYNAPSE BANNER — Services Hero
+     ============================================================ -->
+<div class="neural-banner">
+    <canvas id="neural-canvas"></canvas>
+    <div class="neural-overlay">
+        <h2>{% trans "Services" %}</h2>
+        <p>{% trans "My expertise for your business success" %}</p>
+    </div>
+</div>
+
+<section class="fade-in">
+    <div class="container">
+        <div class="grid grid-2">
+            {% for service in services %}
+            <div class="service-card">
+                <div class="card-icon">
+                    <i data-lucide="{{ service.icon }}"></i>
+                </div>
+                <h3>{{ service.title }}</h3>
+                <p style="color: var(--text-secondary); margin-top: 12px;">{{ service.description }}</p>
+            </div>
+            {% empty %}
+            <p>{% trans "No services added yet." %}</p>
+            {% endfor %}
+        </div>
+
+        <!-- Estimator Section -->
+        <div style="margin-top: 80px; padding-top: 80px; border-top: 1px solid var(--border-color);">
+            <div class="section-head">
+                <h2>{% trans "Estimate Project Scope" %}</h2>
+                <p class="text-secondary" style="color:var(--text-secondary);">{% trans "Answer two simple questions and get an estimate in 1 second." %}</p>
+            </div>
+            
+            <div style="max-width: 600px; margin: 0 auto; background: var(--card-bg); padding: 32px; border: 1px solid var(--border-color); border-radius: 16px;">
+                <form hx-post="{% url 'estimate_service' %}" hx-target="#estimator-result" hx-swap="innerHTML">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label style="font-weight: 600; margin-bottom: 12px;">{% trans "What type of project do you need?" %}</label>
+                        <select name="project_type" required>
+                            <option value="">{% trans "Select..." %}</option>
+                            <option value="web">{% trans "Web Application / Portal" %}</option>
+                            <option value="mobile">{% trans "Mobile Application (iOS/Android)" %}</option>
+                            <option value="crm">{% trans "CRM / Accounting System" %}</option>
+                            <option value="other">{% trans "Other Individual System" %}</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group" style="margin-top: 24px;">
+                        <label style="font-weight: 600; margin-bottom: 12px;">{% trans "Do you have a ready design?" %}</label>
+                        <div style="display: flex; gap: 24px;">
+                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-weight: 400;">
+                                <input type="radio" name="has_design" value="yes" required> {% trans "Yes" %}
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-weight: 400;">
+                                <input type="radio" name="has_design" value="no" required> {% trans "No" %}
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 16px;">
+                        {% trans "Get Estimate" %}
+                    </button>
+                </form>
+                
+                <div id="estimator-result"></div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<script>
+// ============================================================
+// 🟢 NEURAL SYNAPSE — Canvas Animation (JS code visual)
+// ============================================================
+(function() {
+    const canvas = document.getElementById('neural-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let W, H, nodes = [], t = 0;
+
+    function resize() {
+        W = canvas.width  = canvas.offsetWidth;
+        H = canvas.height = canvas.offsetHeight;
+        nodes = [];
+        for (let i = 0; i < 22; i++) {
+            nodes.push({
+                x: Math.random() * W,
+                y: Math.random() * H,
+                vx: (Math.random() - 0.5) * 0.6,
+                vy: (Math.random() - 0.5) * 0.6,
+                r: Math.random() * 3 + 1,
+                hue: Math.floor(Math.random() * 60) + 100
+            });
+        }
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    function draw() {
+        ctx.fillStyle = 'rgba(5,5,16,0.25)';
+        ctx.fillRect(0, 0, W, H);
+        t += 0.015;
+
+        nodes.forEach(n => {
+            n.x += n.vx; n.y += n.vy;
+            if (n.x < 0 || n.x > W) n.vx *= -1;
+            if (n.y < 0 || n.y > H) n.vy *= -1;
+        });
+
+        for (let i = 0; i < nodes.length; i++) {
+            for (let j = i + 1; j < nodes.length; j++) {
+                const dx = nodes[i].x - nodes[j].x;
+                const dy = nodes[i].y - nodes[j].y;
+                const dist = Math.sqrt(dx*dx + dy*dy);
+                if (dist < 160) {
+                    const alpha = (1 - dist/160) * 0.6;
+                    const pulse = (Math.sin(t + i) + 1) / 2;
+                    ctx.beginPath();
+                    ctx.moveTo(nodes[i].x, nodes[i].y);
+                    ctx.lineTo(nodes[j].x, nodes[j].y);
+                    ctx.strokeStyle = `hsla(${nodes[i].hue + pulse*40},100%,60%,${alpha * pulse})`;
+                    ctx.lineWidth = 0.8;
+                    ctx.stroke();
+                }
+            }
+        }
+
+        nodes.forEach((n, i) => {
+            const pulse = (Math.sin(t * 2 + i) + 1) / 2;
+            const glow = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, n.r * 6);
+            glow.addColorStop(0, `hsla(${n.hue},100%,70%,${0.6 * pulse})`);
+            glow.addColorStop(1, 'transparent');
+            ctx.fillStyle = glow;
+            ctx.beginPath();
+            ctx.arc(n.x, n.y, n.r * 6, 0, Math.PI*2);
+            ctx.fill();
+
+            ctx.fillStyle = `hsla(${n.hue},100%,80%,0.9)`;
+            ctx.beginPath();
+            ctx.arc(n.x, n.y, n.r, 0, Math.PI*2);
+            ctx.fill();
+        });
+
+        requestAnimationFrame(draw);
+    }
+    draw();
+})();
+</script>
+{% endblock %}

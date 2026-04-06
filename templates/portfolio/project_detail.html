@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+
+{% block title %}{{ project.title }} | Zeniti{% endblock %}
+
+{% block og_title %}{{ project.title }}{% endblock %}
+{% block og_description %}{{ project.description|truncatewords:20 }}{% endblock %}
+{% block og_image %}{% if project.image %}{{ request.scheme }}://{{ request.get_host }}{{ project.image.url }}{% else %}https://zeniti.tech/static/images/og-image.jpg{% endif %}{% endblock %}
+
+{% block content %}
+<section class="fade-in" style="padding-top: 40px;">
+    <div class="container">
+        
+        <a href="{% url 'projects' %}" style="display: inline-flex; align-items: center; gap: 8px; color: var(--text-secondary); text-decoration: none; margin-bottom: 32px; font-weight: 500;">
+            <i data-lucide="arrow-left" style="width: 18px; height: 18px;"></i>
+            {% trans "Back to Projects" %}
+        </a>
+
+        <div style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);">
+            <!-- Featured Image -->
+            <div {% if project.image %}style="width: 100%; height: 350px; background-color: var(--bg-secondary); display: flex; align-items: center; justify-content: center; background-image: url('{{ project.image.url }}'); background-size: cover; background-position: center;"{% else %}style="width: 100%; height: 350px; background-color: var(--bg-secondary); display: flex; align-items: center; justify-content: center;"{% endif %}>
+                {% if not project.image %}
+                <i data-lucide="image" style="width: 64px; height: 64px; color: var(--text-secondary); opacity: 0.5;"></i>
+                {% endif %}
+            </div>
+
+            <!-- Content -->
+            <div style="padding: 48px;">
+                <h1 style="font-size: 2.5rem; margin-bottom: 16px;">{{ project.title }}</h1>
+                
+                <div class="project-tech" style="margin-bottom: 32px; border-bottom: 1px solid var(--border-color); padding-bottom: 32px;">
+                    {% for tech in project.technologies.split %}
+                    <span style="font-size: 0.85rem; padding: 6px 16px;">{{ tech|escape }}</span>
+                    {% endfor %}
+                    
+                    {% if project.link %}
+                    <a href="{{ project.link }}" target="_blank" class="btn btn-primary" style="margin-left: auto;">
+                        <i data-lucide="external-link" style="width: 18px; height: 18px; display: inline-block; vertical-align: middle; margin-right: 8px;"></i>
+                        {% trans "Live Version" %}
+                    </a>
+                    {% endif %}
+                </div>
+
+                <div class="grid grid-2" style="gap: 48px;">
+                    <div>
+                        <h3 style="margin-bottom: 16px; color: var(--text-primary); display: flex; align-items: center; gap: 8px;">
+                            <i data-lucide="info" style="color: var(--accent-color);"></i> {% trans "Overview" %}
+                        </h3>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">{{ project.description }}</p>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; gap: 32px;">
+                        {% if project.problem %}
+                        <div>
+                            <h3 style="margin-bottom: 12px; font-size: 1.2rem; display: flex; align-items: center; gap: 8px;">
+                                <i data-lucide="alert-circle" style="color: #ef4444; width: 20px;"></i>
+                                {% trans "Problem" %}
+                            </h3>
+                            <p style="color: var(--text-secondary);">{{ project.problem }}</p>
+                        </div>
+                        {% endif %}
+
+                        {% if project.solution %}
+                        <div>
+                            <h3 style="margin-bottom: 12px; font-size: 1.2rem; display: flex; align-items: center; gap: 8px;">
+                                <i data-lucide="lightbulb" style="color: #f59e0b; width: 20px;"></i>
+                                {% trans "Solution" %}
+                            </h3>
+                            <p style="color: var(--text-secondary);">{{ project.solution }}</p>
+                        </div>
+                        {% endif %}
+
+                        {% if project.result %}
+                        <div style="background: var(--bg-secondary); padding: 24px; border-radius: 12px; border: 1px solid var(--border-color);">
+                            <h3 style="margin-bottom: 12px; font-size: 1.2rem; display: flex; align-items: center; gap: 8px; color: var(--accent-color);">
+                                <i data-lucide="trending-up" style="width: 20px;"></i>
+                                {% trans "Result" %}
+                            </h3>
+                            <p style="color: var(--text-primary); font-weight: 500;">{{ project.result }}</p>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+{% endblock %}

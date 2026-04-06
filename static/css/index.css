@@ -1,0 +1,729 @@
+:root {
+    --bg-color: #0d0d12;
+    --bg-secondary: #12121c;
+    --card-bg: #161625;
+    --border-color: #222235;
+    --accent-color: #e63946;
+    --accent-hover: #c1121f;
+    --accent-green: #00ff88;
+    --accent-blue: #4361ee;
+    --text-primary: #f0f0f5;
+    --text-secondary: #a0a0c0;
+    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* --- THEMES --- */
+
+/* 4. Hacker */
+body[data-theme='hacker'] {
+    --bg-color: #000000;
+    --bg-secondary: #000a00;
+    --card-bg: #001000;
+    --border-color: #003300;
+    --text-primary: #00ff41;
+    --text-secondary: #008f11;
+    --accent-color: #00ff41;
+    --accent-green: #00ff41;
+    --accent-blue: #008f11;
+}
+
+/* Navbar glassmorphism adjust based on theme */
+
+
+@keyframes btn-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(230, 57, 70, 0.5); }
+    70% { box-shadow: 0 0 0 10px rgba(230, 57, 70, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(230, 57, 70, 0); }
+}
+
+@keyframes btn-shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+/* ============================================================
+   RÖSSLER LOGO ANIMATION — Navbar (all pages)
+   ============================================================ */
+@keyframes rossler-orbit {
+    0%   { transform: rotate(0deg) scale(1); }
+    25%  { transform: rotate(90deg) scale(1.15); }
+    50%  { transform: rotate(180deg) scale(1); }
+    75%  { transform: rotate(270deg) scale(0.88); }
+    100% { transform: rotate(360deg) scale(1); }
+}
+@keyframes rossler-pulse {
+    0%, 100% { opacity: 1; filter: drop-shadow(0 0 6px #e63946cc); }
+    50%       { opacity: 0.7; filter: drop-shadow(0 0 14px #e63946ff); }
+}
+@keyframes orbit-trail {
+    0%   { stroke-dashoffset: 200; opacity: 0.2; }
+    50%  { stroke-dashoffset: 60;  opacity: 1; }
+    100% { stroke-dashoffset: 200; opacity: 0.2; }
+}
+
+.logo-rossler {
+    width: 36px;
+    height: 36px;
+    animation: rossler-orbit 6s cubic-bezier(0.4, 0, 0.6, 1) infinite,
+               rossler-pulse 3s ease-in-out infinite;
+    flex-shrink: 0;
+}
+.logo-rossler .orbit-path {
+    fill: none;
+    stroke: var(--accent-color);
+    stroke-width: 2;
+    stroke-dasharray: 120 80;
+    animation: orbit-trail 3s ease-in-out infinite;
+}
+.logo-rossler .orbit-dot {
+    fill: var(--accent-color);
+    filter: drop-shadow(0 0 4px #e63946);
+}
+
+/* ============================================================
+   GLOBAL RESET + BASE
+   ============================================================ */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main { flex: 1; padding-top: 80px; }
+
+h1, h2, h3 {
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+}
+
+/* ============================================================
+   NAVIGATION (dark glassmorphism)
+   ============================================================ */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 16px 0;
+    background: rgba(10, 10, 15, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(230, 57, 70, 0.15);
+    transition: var(--transition);
+}
+nav.scrolled {
+    padding: 10px 0;
+    box-shadow: 0 4px 30px rgba(230, 57, 70, 0.1);
+}
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.nav-content { display: flex; justify-content: space-between; align-items: center; }
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    text-decoration: none;
+    letter-spacing: -0.03em;
+}
+.logo span {
+    background: linear-gradient(135deg, #f0f0f5 40%, var(--accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.logo-triangle { display: none; } /* hide old triangle */
+
+.nav-right { display: flex; align-items: center; gap: 32px; transition: var(--transition); }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+    font-size: 0.95rem;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--accent-color); }
+
+/* ============================================================
+   HERO (Rössler subtle canvas bg handled in JS)
+   ============================================================ */
+.hero {
+    text-align: center;
+    padding: 140px 0 100px;
+    background: var(--bg-secondary);
+    position: relative;
+    overflow: hidden;
+}
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 60% at 50% 50%,
+        rgba(230,57,70,0.08) 0%, transparent 70%);
+    pointer-events: none;
+}
+#rossler-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.18;
+    pointer-events: none;
+}
+.hero h1 {
+    font-size: 3.5rem;
+    letter-spacing: -0.04em;
+    background: linear-gradient(135deg, #f0f0f5 30%, var(--accent-color) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+    z-index: 1;
+}
+
+/* ============================================================
+   MÖBIUS CYCLE SECTION (Home page)
+   ============================================================ */
+.mobius-section {
+    padding: 100px 0;
+    background: var(--bg-color);
+    position: relative;
+    overflow: hidden;
+}
+.mobius-section::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle,
+        rgba(67, 97, 238, 0.05) 0%, transparent 70%);
+    pointer-events: none;
+}
+.mobius-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+}
+.mobius-visual {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 320px;
+}
+#mobius-canvas {
+    width: 100%;
+    height: 100%;
+}
+.mobius-formula {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Courier New', monospace;
+    font-size: 0.7rem;
+    color: rgba(67, 97, 238, 0.5);
+    white-space: nowrap;
+}
+.cycle-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+.cycle-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    background: var(--card-bg);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+.cycle-step::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--accent-blue);
+    border-radius: 3px 0 0 3px;
+    transform: scaleY(0);
+    transition: transform 0.4s ease;
+}
+.cycle-step:hover::before { transform: scaleY(1); }
+.cycle-step:hover {
+    border-color: var(--accent-blue);
+    transform: translateX(6px);
+    box-shadow: 0 8px 30px rgba(67,97,238,0.1);
+}
+.step-num {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(67,97,238,0.12);
+    border: 1px solid rgba(67,97,238,0.3);
+    color: var(--accent-blue);
+    font-weight: 700;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.cycle-step h4 { color: var(--text-primary); margin-bottom: 4px; font-size: 1rem; }
+.cycle-step p  { color: var(--text-secondary); font-size: 0.88rem; }
+
+/* ============================================================
+   NEURAL SYNAPSE BANNER (Services page)
+   ============================================================ */
+.neural-banner {
+    position: relative;
+    height: 280px;
+    margin: -80px -0px 48px;
+    overflow: hidden;
+    background: #050510;
+}
+#neural-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+.neural-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg,
+        transparent 0%,
+        rgba(10,10,15,0.4) 60%,
+        var(--bg-color) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 12px;
+}
+.neural-overlay h2 {
+    font-size: 2.8rem;
+    letter-spacing: -0.04em;
+    text-shadow: 0 0 40px rgba(0,255,136,0.3);
+    position: relative;
+    z-index: 1;
+}
+.neural-overlay p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* ============================================================
+   HACKER PANEL (Contact page — left column)
+   ============================================================ */
+.hacker-panel {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(230,57,70,0.2);
+    background: #05050d;
+    min-height: 420px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+#hacker-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.7;
+}
+.hacker-panel-content {
+    position: relative;
+    z-index: 2;
+    padding: 32px;
+    background: linear-gradient(0deg, rgba(5,5,13,0.96) 0%, transparent 100%);
+}
+.hacker-badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent-color);
+    border: 1px solid rgba(230,57,70,0.4);
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+}
+.hacker-panel-content h3 {
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+}
+.hacker-panel-content p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+.contact-links { display: flex; flex-direction: column; gap: 12px; }
+.contact-link {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: var(--text-primary);
+    text-decoration: none;
+    padding: 14px 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    transition: var(--transition);
+    background: rgba(255,255,255,0.03);
+}
+.contact-link:hover {
+    border-color: var(--accent-color);
+    background: rgba(230,57,70,0.06);
+}
+.contact-link-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* ============================================================
+   CIRCUIT MATRIX BANNER (Projects page)
+   ============================================================ */
+.circuit-banner {
+    position: relative;
+    height: 260px;
+    margin-bottom: 48px;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #030d0a;
+    border: 1px solid rgba(0,255,136,0.1);
+}
+#circuit-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+.circuit-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg,
+        rgba(3,13,10,0.7) 0%, rgba(3,13,10,0.3) 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+.circuit-overlay h2 {
+    font-size: 2.6rem;
+    letter-spacing: -0.04em;
+    text-shadow: 0 0 30px rgba(0,255,136,0.4);
+    background: linear-gradient(135deg, #f0f0f5, var(--accent-green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.circuit-overlay p { color: rgba(255,255,255,0.5); font-size: 0.95rem; }
+
+/* ============================================================
+   SECTIONS
+   ============================================================ */
+section { padding: 80px 0; }
+.section-head { margin-bottom: 48px; text-align: center; }
+.section-head h2 { font-size: 2.5rem; margin-bottom: 16px; }
+
+.grid { display: grid; gap: 24px; }
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+
+/* ============================================================
+   CARDS
+   ============================================================ */
+.service-card {
+    padding: 32px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+.service-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        ellipse 60% 60% at 50% 0%,
+        rgba(230,57,70,0.06) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+.service-card:hover { transform: translateY(-6px); border-color: rgba(230,57,70,0.35); }
+.service-card:hover::before { opacity: 1; }
+
+.card-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(230,57,70,0.1);
+    color: var(--accent-color);
+    border-radius: 12px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.project-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+}
+.project-card:hover {
+    border-color: rgba(0,255,136,0.25);
+    box-shadow: 0 10px 40px rgba(0,255,136,0.06);
+    transform: translateY(-4px);
+}
+
+.project-img {
+    height: 200px;
+    background: var(--bg-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-secondary);
+}
+.project-content { padding: 24px; flex: 1; display: flex; flex-direction: column; }
+.project-tech { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 24px; }
+.project-tech span {
+    font-size: 0.75rem;
+    background: rgba(0,255,136,0.06);
+    color: var(--accent-green);
+    padding: 4px 12px;
+    border-radius: 16px;
+    border: 1px solid rgba(0,255,136,0.15);
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn {
+    padding: 12px 28px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    border: 1px solid var(--border-color);
+    font-family: inherit;
+    text-decoration: none;
+    display: inline-block;
+    color: var(--text-primary);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn:hover {
+    transform: translateY(-3px) scale(1.03);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.btn-primary {
+    background: var(--accent-color);
+    color: white;
+    border-color: var(--accent-color);
+    animation: btn-pulse 2s infinite;
+}
+
+.btn-primary::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.3) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    transform: skewX(-25deg);
+    animation: btn-shimmer 3s infinite;
+    z-index: -1;
+}
+
+.btn-primary:hover {
+    background: var(--accent-hover);
+    border-color: var(--accent-hover);
+    box-shadow: 0 10px 30px rgba(230, 57, 70, 0.5);
+    animation: none; /* Stop pulsing on hover to focus on the hover state */
+}
+
+/* ============================================================
+   FORMS
+   ============================================================ */
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; margin-bottom: 8px; color: var(--text-primary); font-weight: 500; }
+
+input, textarea, select {
+    width: 100%;
+    padding: 12px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-family: inherit;
+    transition: var(--transition);
+}
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.12);
+}
+option { background: var(--card-bg); }
+
+/* ============================================================
+   THEME SWITCHER
+   ============================================================ */
+.theme-switcher {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px 12px;
+    border-radius: 30px;
+    border: 1px solid var(--border-color);
+}
+.theme-dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: var(--transition);
+}
+.theme-dot:hover { transform: scale(1.2); }
+.theme-dot.active { border-color: var(--accent-color); transform: scale(1.1); }
+
+.dot-default { background: #0a0a0f; border: 1px solid #e63946; }
+.dot-hacker { background: #000000; border: 1px solid #00ff41; }
+.lang-switcher { display: flex; gap: 8px; }
+.lang-btn {
+    background: none;
+    border: 1px solid transparent;
+    color: var(--text-secondary);
+    padding: 4px 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: var(--transition);
+}
+.lang-btn.active { color: var(--accent-color); border-color: rgba(230,57,70,0.3); background: rgba(230,57,70,0.08); }
+.lang-btn:hover { color: var(--accent-color); }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 24px; flex-wrap: wrap; }
+.footer-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: var(--transition);
+}
+.footer-links a:hover { color: var(--accent-color); }
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+.fade-in { animation: fadeIn 0.7s ease-out forwards; }
+
+/* WhatsApp Float */
+.wa-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: #25d366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+    z-index: 999;
+    transition: var(--transition);
+}
+.wa-float:hover { transform: scale(1.12); box-shadow: 0 6px 30px rgba(37,211,102,0.5); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    
+    .mobile-menu-toggle { display: block !important; }
+    .nav-right {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(10, 10, 15, 0.95);
+        backdrop-filter: blur(16px);
+        flex-direction: column;
+        padding: 24px;
+        gap: 24px;
+        border-bottom: 1px solid rgba(230, 57, 70, 0.15);
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); /* Hidden state */
+        visibility: hidden;
+    }
+    .nav-right.active {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        visibility: visible;
+    }
+    .nav-links { flex-direction: column; width: 100%; gap: 16px; align-items: center; }
+    .nav-controls { flex-direction: column; border-top: 1px solid var(--border-color); padding-top: 16px; width: 100%; }
+    
+    .mobius-layout { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 2.2rem; }
+    .circuit-overlay h2, .neural-overlay h2 { font-size: 1.8rem; }
+}
+

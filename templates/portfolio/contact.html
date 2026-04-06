@@ -1,0 +1,206 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+
+{% block title %}{% trans "Contact" %} | Zeniti{% endblock %}
+
+{% block content %}
+<section class="fade-in">
+    <div class="container">
+        <div class="section-head">
+            <h2>{% trans "Shall we start together?" %}</h2>
+            <p style="color: var(--text-secondary);">{% trans "Leave us a message or contact me directly" %}</p>
+        </div>
+
+        <div class="grid grid-2" style="max-width: 900px; margin: 0 auto; gap: 32px; align-items: start;">
+            <!-- ⚫ HACKER PANEL — Developer Identity Canvas -->
+            <div class="hacker-panel">
+                <canvas id="hacker-canvas"></canvas>
+                <div class="hacker-panel-content">
+                    <span class="hacker-badge">Full-Stack Developer</span>
+                    <h3>achiko10</h3>
+                    <p>{% trans "Django, React, Mobile — Systems that get the job done. Ready for your next project." %}</p>
+                    <div class="contact-links">
+                        <a href="mailto:achiko.buadze006@ens.tsu.edu.ge" class="contact-link">
+                            <div class="contact-link-icon" style="background:rgba(230,57,70,0.12);color:var(--accent-color);">
+                                <i data-lucide="mail"></i>
+                            </div>
+                            <div>
+                                <div style="font-size:0.8rem;color:var(--text-secondary);">Email</div>
+                                <div style="font-weight:500;font-size:0.9rem;">achiko.buadze006@ens.tsu.edu.ge</div>
+                            </div>
+                        </a>
+                        <a href="https://wa.me/995579166626" target="_blank" class="contact-link">
+                            <div class="contact-link-icon" style="background:rgba(37,211,102,0.12);color:#25d366;">
+                                <i data-lucide="phone"></i>
+                            </div>
+                            <div>
+                                <div style="font-size:0.8rem;color:var(--text-secondary);">WhatsApp</div>
+                                <div style="font-weight:500;font-size:0.9rem;">+995 579 166 626</div>
+                            </div>
+                        </a>
+                        <a href="https://www.linkedin.com/in/achi-mgebrishvili-41b9b8340/" target="_blank" class="contact-link">
+                            <div class="contact-link-icon" style="background:rgba(0,119,181,0.12);color:#0077b5;">
+                                <i data-lucide="linkedin"></i>
+                            </div>
+                            <div>
+                                <div style="font-size:0.8rem;color:var(--text-secondary);">LinkedIn</div>
+                                <div style="font-weight:500;font-size:0.9rem;">Achi Mgebrishvili</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Booking Form -->
+            <div style="background: var(--card-bg); padding: 32px; border: 1px solid var(--border-color); border-radius: 16px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);">
+                <h3 style="margin-bottom: 24px; font-size: 1.25rem;">{% trans "Send me a message" %}</h3>
+                <div id="booking-response">
+                    <form hx-post="{% url 'book_service' %}" hx-target="#booking-response" hx-swap="outerHTML">
+                        {% csrf_token %}
+                        <!-- Honeypot Field -->
+                        <div style="display: none;" aria-hidden="true">
+                            <input type="text" name="website_url" tabindex="-1" autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <label>{% trans "Your Name" %}</label>
+                            <input type="text" name="name" required placeholder="John Doe">
+                        </div>
+                        <div class="form-group">
+                            <label>{% trans "Email" %}</label>
+                            <input type="email" name="email" required placeholder="john@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label>{% trans "What would you like to do?" %}</label>
+                            <select name="service">
+                                <option value="">{% trans "General Inquiry" %}</option>
+                                {% for service in services %}
+                                <option value="{{ service.id }}">{{ service.title }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>{% trans "Message" %}</label>
+                            <textarea name="message" rows="4" required placeholder="{% trans 'Describe your idea...' %}"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">{% trans "Send" %}</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top: 80px; padding-top: 80px; border-top: 1px solid var(--border-color);">
+            <div class="section-head">
+                <h2>{% trans "Book a Meeting (Native Calendar)" %}</h2>
+                <p class="text-secondary">{% trans "Choose a date and see available slots." %}</p>
+            </div>
+            
+            <div style="max-width: 600px; margin: 0 auto; background: var(--card-bg); padding: 32px; border: 1px solid var(--border-color); border-radius: 16px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);">
+                <div id="calendar-response">
+                    <form hx-post="{% url 'book_appointment' %}" hx-target="#calendar-response" hx-swap="outerHTML">
+                        {% csrf_token %}
+                        <!-- Honeypot Field -->
+                        <div style="display: none;" aria-hidden="true">
+                            <input type="text" name="website_url" tabindex="-1" autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <label>{% trans "თქვენი სახელი" %}</label>
+                            <input type="text" name="name" required placeholder="John Doe">
+                        </div>
+                        <div class="form-group">
+                            <label>{% trans "ელ-ფოსტა" %}</label>
+                            <input type="email" name="email" required placeholder="john@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label>{% trans "Select Date" %}</label>
+                            <input type="date" name="date" required 
+                                   min="{% now 'Y-m-d' %}"
+                                   hx-get="{% url 'get_available_slots' %}" 
+                                   hx-target="#available-slots" 
+                                   hx-trigger="change">
+                        </div>
+                        <div class="form-group">
+                            <label>{% trans "Select Time" %}</label>
+                            <div id="available-slots" style="min-height: 50px;">
+                                <p style="color: var(--text-secondary); font-size: 0.9rem;">
+                                    {% trans "Please select a date first" %}
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 16px;">
+                            {% trans "Book Meeting" %}
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <div style="margin-top: 80px; padding-top: 80px; border-top: 1px solid var(--border-color);">
+            <div class="section-head">
+                <h2>{% trans "Frequently Asked Questions" %}</h2>
+            </div>
+            
+            <div style="max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px;">
+                {% for faq in faqs %}
+                <details style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; transition: var(--transition);">
+                    <summary style="font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                        {{ faq.question }}
+                        <i data-lucide="chevron-down" style="width: 20px; color: var(--text-secondary);"></i>
+                    </summary>
+                    <p style="margin-top: 16px; color: var(--text-secondary); line-height: 1.6;">
+                        {{ faq.answer }}
+                    </p>
+                </details>
+                {% empty %}
+                <p style="text-align: center;">FAQ ინფორმაცია ჯერ არ არის.</p>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<script>
+// ============================================================
+// ⚫ HACKER CANVAS — Matrix Rain (red, representing developer)
+// ============================================================
+(function() {
+    const canvas = document.getElementById('hacker-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let W, H, cols, drops;
+    const chars = '01アイウエオカキDJANGOREACTPYTHON</>{}[]';
+
+    function resize() {
+        W = canvas.width  = canvas.offsetWidth;
+        H = canvas.height = canvas.offsetHeight;
+        cols = Math.floor(W / 14);
+        drops = new Array(cols).fill(1).map(() => Math.random() * -H / 14);
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    function draw() {
+        ctx.fillStyle = 'rgba(5,5,13,0.07)';
+        ctx.fillRect(0, 0, W, H);
+        ctx.font = '12px "Courier New", monospace';
+        drops.forEach((y, i) => {
+            const char = chars[Math.floor(Math.random() * chars.length)];
+            const x = i * 14;
+            if (y > 0 && y < 2) {
+                ctx.fillStyle = '#ff9999';
+            } else {
+                ctx.fillStyle = `rgba(230,57,70,${0.2 + Math.random() * 0.5})`;
+            }
+            ctx.fillText(char, x, y * 14);
+            drops[i] = y + 1;
+            if (y * 14 > H && Math.random() > 0.975) drops[i] = 0;
+        });
+        requestAnimationFrame(draw);
+    }
+    draw();
+})();
+</script>
+{% endblock %}

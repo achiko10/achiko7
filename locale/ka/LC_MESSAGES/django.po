@@ -1,0 +1,276 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Zeniti\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-06 05:00+0400\n"
+"PO-Revision-Date: 2026-04-06 05:00+0400\n"
+"Last-Translator: Antigravity\n"
+"Language-Team: Georgian\n"
+"Language: ka\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Services"
+msgstr "სერვისები"
+
+msgid "Projects"
+msgstr "პროექტები"
+
+msgid "Contact"
+msgstr "კონტაქტი"
+
+msgid "Developer & Manager"
+msgstr "დეველოპერი და მმართველი"
+
+msgid "Message us on WhatsApp"
+msgstr "მოგვწერეთ WhatsApp-ზე"
+
+msgid "Zeniti"
+msgstr "ზენიტი"
+
+msgid "Innovative Full-stack & Mobile Solutions"
+msgstr "ინოვაციური Full-stack & Mobile გადაწყვეტილებები"
+
+msgid "I am achiko10, an experienced developer creating scalable, secure, and user-centric systems."
+msgstr "მე ვარ achiko10, გამოცდილი დეველოპერი, რომელიც ქმნის სკალირებად, უსაფრთხო და მომხმარებელზე ორიენტირებულ სისტემებს."
+
+msgid "Contact Me"
+msgstr "დამიკავშირდით"
+
+msgid "Our Working Cycle"
+msgstr "ჩვენი მუშაობის ციკლი"
+
+msgid "Möbius Strip — one surface, one path. Our process works with the same structure."
+msgstr "Möbius-ის ლენტი — ერთი ზედაპირი, ერთი გზა. ჩვენი პროცესი იგივე სტრუქტურით მუშაობს."
+
+msgid "Understand & Analyze"
+msgstr "გაგება და ანალიზი"
+
+msgid "Deep study of your business goals, target audience, and competitors."
+msgstr "თქვენი ბიზნეს-მიზნების, სამიზნე აუდიტორიის და კონკურენტების ღრმა შესწავლა."
+
+msgid "Create & Develop"
+msgstr "შექმნა და განვითარება"
+
+msgid "With speed and precision — code that is flexible and scales easily."
+msgstr "სიჩქარითა და სიზუსტით — კოდი, რომელიც მოქნილია და ადვილად სკალირდება."
+
+msgid "Launch & Update"
+msgstr "გაშვება და განახლება"
+
+msgid "Product goes live — and the cycle starts again. We always optimize."
+msgstr "პროდუქტი გამოდის — და ციკლი ისევ იწყება. ჩვენ ყოველთვის ვოპტიმიზებთ."
+
+msgid "My expertise for your business success"
+msgstr "ჩემი ექსპერტიზა თქვენი ბიზნესის წარმატებისთვის"
+
+msgid "No services added yet."
+msgstr "სერვისები ჯერ არ არის დამატებული."
+
+msgid "Estimate Project Scope"
+msgstr "გამოთვალეთ პროექტის მოცულობა"
+
+msgid "Answer two simple questions and get an estimate in 1 second."
+msgstr "უპასუხეთ ორ მარტივ კითხვას და მიიღეთ სავარაუდო შეფასება 1 წამში."
+
+msgid "What type of project do you need?"
+msgstr "რა ტიპის პროექტი გჭირდებათ?"
+
+msgid "Select..."
+msgstr "აირჩიეთ..."
+
+msgid "Web Application / Portal"
+msgstr "ვებ-აპლიკაცია / პორტალი"
+
+msgid "Mobile Application (iOS/Android)"
+msgstr "მობილური აპლიკაცია (iOS/Android)"
+
+msgid "CRM / Accounting System"
+msgstr "CRM / სააღრიცხო სისტემა"
+
+msgid "Other Individual System"
+msgstr "სხვა ინდივიდუალური სისტემა"
+
+msgid "Do you have a ready design?"
+msgstr "გაქვთ თუ არა გამზადებული დიზაინი?"
+
+msgid "Yes"
+msgstr "დიახ"
+
+msgid "No"
+msgstr "არა"
+
+msgid "Get Estimate"
+msgstr "შეფასების მიღება"
+
+msgid "Featured Projects"
+msgstr "რჩეული პროექტები"
+
+msgid "Experience that creates real value"
+msgstr "გამოცდილება, რომელიც რეალურ ღირებულებას ქმნის"
+
+msgid "View Details"
+msgstr "სრულად ნახვა"
+
+msgid "No projects added yet."
+msgstr "პროექტები ჯერ არ არის დამატებული."
+
+msgid "Shall we start together?"
+msgstr "ერთად დავიწყოთ?"
+
+msgid "Leave us a message or contact me directly"
+msgstr "დამიტოვეთ შეტყობინება ან დამიკავშირდით პირდაპირ"
+
+msgid "Django, React, Mobile — Systems that get the job done. Ready for your next project."
+msgstr "Django, React, Mobile — სისტემები, რომლებიც საქმეს აკეთებენ. მზად ვარ თქვენი შემდეგი პროექტისთვის."
+
+msgid "Send me a message"
+msgstr "გამომიგზავნეთ შეტყობინება"
+
+msgid "Your Name"
+msgstr "თქვენი სახელი"
+
+msgid "Email"
+msgstr "ელ-ფოსტა"
+
+msgid "What would you like to do?"
+msgstr "რისი გაკეთება გსურთ?"
+
+msgid "General Inquiry"
+msgstr "ზოგადი შეკითხვა"
+
+msgid "Message"
+msgstr "შეტყობინება"
+
+msgid "Describe your idea..."
+msgstr "აღწერეთ თქვენი იდეა..."
+
+msgid "Send"
+msgstr "გაგზავნა"
+
+msgid "Book a Meeting (Native Calendar)"
+msgstr "დაჯავშნეთ შეხვედრა (Native Calendar)"
+
+msgid "Choose a date and see available slots."
+msgstr "აირჩიეთ თარიღი და ნახეთ თავისუფალი საათები."
+
+msgid "Select Date"
+msgstr "აირჩიეთ თარიღი"
+
+msgid "Select Time"
+msgstr "აირჩიეთ დრო"
+
+msgid "Please select a date first"
+msgstr "გთხოვთ ჯერ აირჩიოთ თარიღი"
+
+msgid "Book Meeting"
+msgstr "შეხვედრის დაჯავშნა"
+
+msgid "Frequently Asked Questions"
+msgstr "ხშირად დასმული კითხვები"
+
+msgid "Back to Projects"
+msgstr "პროექტებში დაბრუნება"
+
+msgid "Live Version"
+msgstr "ცოცხალი ვერსია"
+
+msgid "Overview"
+msgstr "მიმოხილვა"
+
+msgid "Problem"
+msgstr "პრობლემა"
+
+msgid "Solution"
+msgstr "გადაწყვეტა"
+
+msgid "Result"
+msgstr "შედეგი"
+
+msgid "Your Estimated Scope"
+msgstr "თქვენი დაახლოებითი შეფასება"
+
+msgid "Recommended Service"
+msgstr "რეკომენდებული სერვისი"
+
+msgid "Estimated Time"
+msgstr "სავარაუდო დრო"
+
+msgid "Typical Budget Category"
+msgstr "ტიპიური ბიუჯეტის კატეგორია"
+
+msgid "Let's start the project"
+msgstr "დავიწყოთ პროექტი"
+
+msgid "General Consultation"
+msgstr "ზოგადი კონსულტაცია"
+
+msgid "New Message from Website"
+msgstr "ახალი შეტყობინება საიტიდან"
+
+msgid "Name"
+msgstr "სახელი"
+
+msgid "Service"
+msgstr "სერვისი"
+
+msgid "Thank you!"
+msgstr "მადლობა!"
+
+msgid "Your request was successfully sent. We will contact you soon."
+msgstr "თქვენი მოთხოვნა წარმატებით გაიგზავნა. მალე დაგიკავშირდებით."
+
+msgid "Please select a future date."
+msgstr "გთხოვთ აირჩიოთ მომავალი თარიღი."
+
+msgid "No available slots on this day."
+msgstr "არ არის თავისუფალი საათები ამ დღეს."
+
+msgid "New Appointment Request"
+msgstr "ახალი შეხვედრის მოთხოვნა"
+
+msgid "Client"
+msgstr "კლიენტი"
+
+msgid "Date"
+msgstr "თარიღი"
+
+msgid "Time"
+msgstr "დრო"
+
+msgid "Confirm"
+msgstr "დაადასტურეთ"
+
+msgid "This slot is already booked."
+msgstr "ეს დრო უკვე დაკავებულია."
+
+msgid "Request received!"
+msgstr "მოთხოვნა მიღებულია!"
+
+msgid "We will contact you soon for confirmation."
+msgstr "მალე დაგიკავშირდებით დასადასტურებლად."
+
+msgid "Web Application / Website"
+msgstr "ვებ-აპლიკაცია / ვებსაიტი"
+
+msgid "weeks"
+msgstr "კვირა"
+
+msgid "Mobile Application"
+msgstr "მობილური აპლიკაცია"
+
+msgid "CRM / Business Automation"
+msgstr "CRM / ბიზნეს ავტომატიზაცია"
+
+msgid "Custom Solution"
+msgstr "ინდივიდუალური გადაწყვეტა"
+
+msgid "After assessment"
+msgstr "შეფასების შემდეგ"
+
+msgid "Depends on requirements"
+msgstr "დამოკიდებულია მოთხოვნებზე"
+
+msgid "I will work on the design from scratch."
+msgstr "დიზაინის შექმნაზე ვიმუშავებ ნულიდან."

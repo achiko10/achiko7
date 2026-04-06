@@ -1,0 +1,216 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Zeniti\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-05 18:00+0400\n"
+"PO-Revision-Date: 2026-04-05 18:00+0400\n"
+"Last-Translator: achiko10\n"
+"Language-Team: English <en@li.org>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "სათაური"
+msgstr "Title"
+
+msgid "აღწერა"
+msgstr "Description"
+
+msgid "ტექნოლოგიები"
+msgstr "Technologies"
+
+msgid "ბმული"
+msgstr "Link"
+
+msgid "სურათი"
+msgstr "Image"
+
+msgid "რიგითობა"
+msgstr "Order"
+
+msgid "პროექტი"
+msgstr "Project"
+
+msgid "პროექტები"
+msgstr "Projects"
+
+msgid "სერვისი"
+msgstr "Service"
+
+msgid "სერვისები"
+msgstr "Services"
+
+msgid "ხატულა"
+msgstr "Icon"
+
+msgid "სახელი"
+msgstr "Name"
+
+msgid "ელ-ფოსტა"
+msgstr "Email"
+
+msgid "ტელეფონი"
+msgstr "Phone"
+
+msgid "შეტყობინება"
+msgstr "Message"
+
+msgid "დაჯავშნა"
+msgstr "Booking"
+
+msgid "დაჯავშნები"
+msgstr "Bookings"
+
+msgid "კონტაქტი"
+msgstr "Contact"
+
+msgid "დეველოპერი და მმართველი"
+msgstr "Developer & Manager"
+
+msgid "მადლობა!"
+msgstr "Thank you!"
+
+msgid "თქვენი მოთხოვნა წარმატებით გაიგზავნა. მალე დაგიკავშირდებით."
+msgstr "Your request was successfully sent. We will contact you soon."
+
+msgid "ზენიტი"
+msgstr "Zeniti"
+
+msgid "ინოვაციური Full-stack & Mobile გადაწყვეტილებები"
+msgstr "Innovative Full-stack & Mobile Solutions"
+
+msgid "მე ვარ achiko10, გამოცდილი დეველოპერი, რომელიც ქმნის სკალირებად, უსაფრთხო და მომხმარებელზე ორიენტირებულ სისტემებს."
+msgstr "I am achiko10, an experienced developer creating scalable, secure, and user-centric systems."
+
+msgid "დამიკავშირდით"
+msgstr "Contact Me"
+
+msgid "ჩემი ექსპერტიზა თქვენი ბიზნესის წარმატებისთვის"
+msgstr "My expertise for your business success"
+
+msgid "სერვისები ჯერ არ არის დამატებული."
+msgstr "No services added yet."
+
+msgid "რჩეული პროექტები"
+msgstr "Featured Projects"
+
+msgid "გამოცდილება, რომელიც რეალურ ღირებულებას ქმნის"
+msgstr "Experience that creates real value"
+
+msgid "ნახვა"
+msgstr "View"
+
+msgid "პროექტები ჯერ არ არის დამატებული."
+msgstr "No projects added yet."
+
+msgid "ერთად დავიწყოთ?"
+msgstr "Shall we start together?"
+
+msgid "დამიტოვეთ შეტყობინება ან დამიკავშირდით პირდაპირ"
+msgstr "Leave us a message or contact me directly"
+
+msgid "საკონტაქტო ინფორმაცია"
+msgstr "Contact Information"
+
+msgid "მზად ვარ ვითანამშრომლო საინტერესო პროექტებზე. დამიკავშირდით ნებისმიერი მოსახერხებელი გზით."
+msgstr "I am open to cooperating on interesting projects. Contact me via any convenient method."
+
+msgid "გამომიგზავნეთ შეტყობინება"
+msgstr "Send me a message"
+
+msgid "თქვენი სახელი"
+msgstr "Your Name"
+
+msgid "რისი გაკეთება გსურთ?"
+msgstr "What would you like to do?"
+
+msgid "ზოგადი შეკითხვა"
+msgstr "General Inquiry"
+
+msgid "აღწერეთ თქვენი იდეა..."
+msgstr "Describe your idea..."
+
+msgid "გაგზავნა"
+msgstr "Send"
+
+msgid "მოგვწერეთ WhatsApp-ზე"
+msgstr "Message us on WhatsApp"
+
+msgid "პროექტებში დაბრუნება"
+msgstr "Back to Projects"
+
+msgid "ცოცხალი ვერსია"
+msgstr "Live Version"
+
+msgid "პრობლემა (Problem)"
+msgstr "Problem"
+
+msgid "გადაწყვეტა (Solution)"
+msgstr "Solution"
+
+msgid "შედეგი (Result)"
+msgstr "Result"
+
+msgid "თქვენი დაახლოებითი შეფასება"
+msgstr "Your Estimated Scope"
+
+msgid "რეკომენდებული სერვისი"
+msgstr "Recommended Service"
+
+msgid "სავარაუდო დრო"
+msgstr "Estimated Time"
+
+msgid "ტიპიური ბიუჯეტის კატეგორია"
+msgstr "Typical Budget Category"
+
+msgid "დავიწყოთ პროექტი"
+msgstr "Let's start the project"
+
+msgid "გამოთვალეთ პროექტის მოცულობა"
+msgstr "Estimate Project Scope"
+
+msgid "უპასუხეთ ორ მარტივ კითხვას და მიიღეთ სავარაუდო შეფასება 1 წამში."
+msgstr "Answer two simple questions and get an estimate in 1 second."
+
+msgid "რა ტიპის პროექტი გჭირდებათ?"
+msgstr "What type of project do you need?"
+
+msgid "აირჩიეთ..."
+msgstr "Select..."
+
+msgid "ვებ-აპლიკაცია / პორტალი"
+msgstr "Web Application / Portal"
+
+msgid "მობილური აპლიკაცია (iOS/Android)"
+msgstr "Mobile Application (iOS/Android)"
+
+msgid "CRM / სააღრიცხო სისტემა"
+msgstr "CRM / Accounting System"
+
+msgid "სხვა ინდივიდუალური სისტემა"
+msgstr "Other Individual System"
+
+msgid "გაქვთ თუ არა გამზადებული დიზაინი?"
+msgstr "Do you have a ready design?"
+
+msgid "დიახ"
+msgstr "Yes"
+
+msgid "არა"
+msgstr "No"
+
+msgid "შეფასების მიღება"
+msgstr "Get Estimate"
+
+msgid "დაჯავშნეთ 15-წუთიანი ზარი"
+msgstr "Book a 15-minute call"
+
+msgid "აირჩიეთ თქვენთვის მოსახერხებელი დრო და პირდაპირ ვისაუბროთ თქვენს იდეაზე."
+msgstr "Choose a convenient time and let's talk directly about your idea."
+
+msgid "ხშირად დასმული კითხვები"
+msgstr "Frequently Asked Questions"
+
+msgid "სრულად ნახვა"
+msgstr "View Details"

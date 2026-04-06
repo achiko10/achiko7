@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}500 Server Error | Zeniti{% endblock %}
+
+{% block content %}
+<section class="fade-in" style="min-height: 70vh; display: flex; align-items: center; justify-content: center; text-align: center;">
+    <div class="container">
+        <!-- Subtle Glow Background -->
+        <div style="position: absolute; inset: 0; background: radial-gradient(circle at 50% 50%, rgba(230,57,70,0.05) 0%, transparent 60%); pointer-events: none;"></div>
+        
+        <div style="position:relative; z-index:1;">
+            <p style="font-size: 5rem; font-weight: 700; color: var(--accent-color); margin: 0; font-family: 'Courier New', monospace; letter-spacing: 0.1em; text-shadow: 0 0 20px rgba(230,57,70,0.4);">
+                500
+            </p>
+            <h1 style="margin-top: 16px; margin-bottom: 24px;">{% trans "Internal Override" %}</h1>
+            <p style="color: var(--text-secondary); max-width: 500px; margin: 0 auto 32px auto; font-size: 1.1rem; line-height: 1.6;">
+                {% trans "Our server experienced an unexpected anomaly. The engineering team has been notified." %}
+            </p>
+            
+            <a href="{% url 'home' %}" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 8px;">
+                <i data-lucide="home" style="width: 18px;"></i>
+                {% trans "Return" %}
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}
