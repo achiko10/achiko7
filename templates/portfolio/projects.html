@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 {% load i18n static %}
 
-{% block title %}{% trans "Projects" %} | Zeniti{% endblock %}
+{% block title %}{% trans "Projects" %} | Zenith{% endblock %}
 
 {% block content %}
 <section class="fade-in" style="background: var(--bg-secondary);">
     <div class="container">
-        <!-- ⚫ CIRCUIT MATRIX BANNER — Hacker Vector Visual -->
+        <!-- ⚫ CIRCUIT MATRIX BANNER -->
         <div class="circuit-banner">
             <canvas id="circuit-canvas"></canvas>
             <div class="circuit-overlay">
@@ -14,7 +14,15 @@
                 <p>{% trans "Experience that creates real value" %}</p>
             </div>
         </div>
-        
+
+        <!-- Filter Buttons -->
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:32px;justify-content:center;">
+            <a href="{% url 'projects' %}" class="btn {% if not active_cat %}btn-primary{% endif %}" style="padding:8px 20px;font-size:0.85rem;">{% trans "All" %}</a>
+            <a href="?category=web" class="btn {% if active_cat == 'web' %}btn-primary{% endif %}" style="padding:8px 20px;font-size:0.85rem;">Web</a>
+            <a href="?category=mobile" class="btn {% if active_cat == 'mobile' %}btn-primary{% endif %}" style="padding:8px 20px;font-size:0.85rem;">Mobile</a>
+            <a href="?category=crm" class="btn {% if active_cat == 'crm' %}btn-primary{% endif %}" style="padding:8px 20px;font-size:0.85rem;">CRM</a>
+        </div>
+
         <div class="grid grid-3">
             {% for project in projects %}
             <div class="project-card">
@@ -25,14 +33,14 @@
                 </div>
                 <div class="project-content">
                     <h3 style="margin-bottom: 8px;">{{ project.title }}</h3>
-                    <p style="font-size: 0.9rem; color: var(--text-secondary);">{{ project.description }}</p>
-                    
+                    <p style="font-size: 0.9rem; color: var(--text-secondary);">{{ project.description|striptags|truncatewords:20 }}</p>
+
                     <div class="project-tech">
                         {% for tech in project.technologies.split %}
                         <span>{{ tech|escape }}</span>
                         {% endfor %}
                     </div>
-                    
+
                     <div style="margin-top: auto; display: flex; gap: 12px; align-items: center;">
                         <a href="{% url 'project_detail' project.slug %}" class="btn btn-primary" style="padding: 8px 16px; font-size: 0.85rem;">{% trans "View Details" %}</a>
                         {% if project.link %}
@@ -44,7 +52,7 @@
                 </div>
             </div>
             {% empty %}
-            <p>{% trans "No projects added yet." %}</p>
+            <p style="text-align:center;color:var(--text-secondary);">{% trans "No projects added yet." %}</p>
             {% endfor %}
         </div>
     </div>

@@ -21,18 +21,18 @@
 ## 🛠 შეთავაზებული ცვლილებების გეგმა
 
 ### 1. Telegram-ის ბაგ-ფიქსი
-#### [MODIFY] [portfolio/telegram.py](file:///c:/Users/Utente/.gemini/antigravity/scratch/zeniti/portfolio/telegram.py) და [portfolio/views.py](file:///c:/Users/Utente/.gemini/antigravity/scratch/zeniti/portfolio/views.py)
+#### [MODIFY] [portfolio/telegram.py](file:///c:/Users/Utente/.gemini/antigravity/scratch/zenith/portfolio/telegram.py) და [portfolio/views.py](file:///c:/Users/Utente/.gemini/antigravity/scratch/zenith/portfolio/views.py)
 - წავშლით `escape_markdown_v2` ფუნქციას.
 - `send_telegram_message` შეცვლის პარამეტრს `"parse_mode": "HTML"`.
 - `views.py`-ში ტექსტებს ავაწყობთ `<b>სათაური:</b>` ფორმატით `*სათაური:*`-ის ნაცვლად.
 
 ### 2. ვიზუალის დასუფთავება (Rössler Canvas)
-#### [MODIFY] [templates/portfolio/home.html](file:///c:/Users/Utente/.gemini/antigravity/scratch/zeniti/templates/portfolio/home.html)
+#### [MODIFY] [templates/portfolio/home.html](file:///c:/Users/Utente/.gemini/antigravity/scratch/zenith/templates/portfolio/home.html)
 - ამოვიღებთ `<canvas id="rossler-canvas">` ტეგს და მის JavaScript ლოგიკას (`dx/dt...` ანიმაციას).
 - ამოვიღებთ ზედმეტ კონტექსტს (`dx/dt` ტექსტებს) და დავტოვებთ მხოლოდ "Innovative Full-stack & Mobile Solutions" მიმართვას ესთეტიკურ ფონზე.
 
 ### 3. Admin-პანელის სრული შემოწმება
-#### [MODIFY] [portfolio/admin.py](file:///c:/Users/Utente/.gemini/antigravity/scratch/zeniti/portfolio/admin.py)
+#### [MODIFY] [portfolio/admin.py](file:///c:/Users/Utente/.gemini/antigravity/scratch/zenith/portfolio/admin.py)
 - გადავამოწმებთ, რომ ყველა ველი (`time_slot`, `status`, `message`, `technologies`) არის წარმოდგენილი `list_display`, `search_fields` და მორგებულია საძიებლად.
 
 ---

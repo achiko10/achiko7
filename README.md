@@ -1,10 +1,10 @@
-# Zeniti: High-Precision Full-Stack Portfolio 🚀
+# Zenith: High-Precision Full-Stack Portfolio 🚀
 
 [![Django](https://img.shields.io/badge/Framework-Django%204.2-092E20?style=for-the-badge&logo=django&logoColor=white)](https://www.djangoproject.com/)
-[![Aesthetic](https://img.shields.io/badge/Aesthetic-Hyper--Precision-red?style=for-the-badge)](https://zeniti.tech)
+[![Aesthetic](https://img.shields.io/badge/Aesthetic-Hyper--Precision-red?style=for-the-badge)](https://zenith.tech)
 [![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](LICENSE)
 
-**Zeniti** is a professional-grade, B2B-focused developer portfolio and service ecosystem. It combines a striking "Cyber-Hacker" aesthetic with robust automation, real-time notifications, and high-precision UI/UX design.
+**Zenith** is a professional-grade, B2B-focused developer portfolio and service ecosystem. It combines a striking "Cyber-Hacker" aesthetic with robust automation, real-time notifications, and high-precision UI/UX design.
 
 ---
 

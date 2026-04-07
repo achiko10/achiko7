@@ -11,7 +11,7 @@ class Command(BaseCommand):
     help = 'Runs the Telegram Bot via Long Polling with OpenAI Integration'
 
     def handle(self, *args, **options):
-        self.stdout.write(self.style.SUCCESS("Starting Zeniti Telegram Bot (AI Powered)..."))
+        self.stdout.write(self.style.SUCCESS("Starting Zenith Telegram Bot (AI Powered)..."))
         
         token = getattr(settings, 'TELEGRAM_BOT_TOKEN', None)
         openai_key = getattr(settings, 'OPENAI_API_KEY', None)
@@ -74,7 +74,7 @@ class Command(BaseCommand):
         
         if command == "/start":
             msg = (
-                "👋 *მოგესალმები Zeniti Admin\\!*\n\n"
+                "👋 *მოგესალმები Zenith Admin\\!*\n\n"
                 "მე ვარ შენი პერსონალური ასისტენტი\\. შეგიძლიათ დამელაპარაკოთ ჩვეულებრივ ენაზე ან გამოიყენოთ ბრძანებები:\n\n"
                 "📅 /agenda \\- ჩემი უახლოესი შეხვედრები\n"
                 "📊 /stats \\- საიტის სტატისტიკა\n"
@@ -176,7 +176,7 @@ class Command(BaseCommand):
             appt_text += f"- {a.name} ({a.date} @ {a.time_slot})\n"
 
         system_prompt = (
-            "შენ ხარ Zeniti-ს ადმინისტრაციული ასისტენტი. შენი სახელია 'Zeniti AI'. "
+            "შენ ხარ Zenith-ს ადმინისტრაციული ასისტენტი. შენი სახელია 'Zenith AI'. "
             "შენ პასუხობ საიტის მფლობელს (ადმინს) მაქსიმალურად ადამიანურ, მეგობრულ და ბუნებრივ ქართულ ენაზე. "
             "არ დაწერო რობოტივით. გამოიყენე ემოჯიები საჭიროებისამებრ. "
             "\n\nკონტექსტი საიტის შესახებ:\n"
@@ -207,7 +207,7 @@ class Command(BaseCommand):
         # Regular command responses use self.escape_md.
         
         # Check if text is probably already escaped or if it's from AI
-        is_ai = "Zeniti AI" in text or not "\\" in text
+        is_ai = "Zenith AI" in text or not "\\" in text
         
         payload = {
             "chat_id": chat_id,

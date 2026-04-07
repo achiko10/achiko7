@@ -20,11 +20,54 @@
         <span style="display: block; font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 4px;">{% trans "Typical Budget Category" %}</span>
         <strong style="font-size: 1.25rem; color: var(--text-primary);">{{ budget }}</strong>
         
+        <div style="margin-top: 24px;">
+            <strong style="display: block; font-size: 0.95rem; margin-bottom: 8px;">{% trans "Included Core Features:" %}</strong>
+            <ul style="list-style-type: none; padding-left: 0; margin-bottom: 16px;">
+                {% for feature in features %}
+                <li style="color: var(--text-secondary); margin-bottom: 6px; display: flex; align-items: center; gap: 8px;">
+                    <i data-lucide="check" style="width: 14px; color: var(--accent-color);"></i>
+                    {{ feature }}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        
         {% if design_note %}
-        <p style="margin-top: 12px; font-size: 0.9rem; color: var(--text-secondary); display: flex; align-items: center; gap: 6px;">
+        <p style="margin-top: 12px; font-size: 0.9rem; color: var(--text-secondary); display: flex; align-items: center; gap: 6px; background: var(--bg-primary); padding: 12px; border-radius: 8px;">
             <i data-lucide="info" style="width: 16px;"></i> {{ design_note }}
         </p>
         {% endif %}
+    </div>
+    
+    <div style="margin-top: 24px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1);">
+        <p style="font-size: 0.9rem; margin-bottom: 12px; color: var(--text-primary);">{% trans "Get this formal quotation as a PDF:" %}</p>
+        
+        <!-- Action Row -->
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+            <!-- Download Button -->
+            <form action="{% url 'action_pdf_quotation' %}" method="post" target="_blank" style="flex: 1; min-width: 150px;">
+                {% csrf_token %}
+                <input type="hidden" name="project_type" value="{{ project_type_val }}">
+                <input type="hidden" name="has_design" value="{{ has_design_val }}">
+                <input type="hidden" name="action" value="download">
+                <button type="submit" class="btn" style="width: 100%; border: 1px solid var(--border-color); background: var(--bg-primary); display: flex; align-items: center; justify-content: center; gap: 8px;">
+                    <i data-lucide="download" style="width: 18px;"></i> {% trans "Download PDF" %}
+                </button>
+            </form>
+            
+            <!-- Email Form -->
+            <form hx-post="{% url 'action_pdf_quotation' %}" hx-target="#pdf-email-result" style="flex: 2; min-width: 250px; display: flex; gap: 8px;">
+                {% csrf_token %}
+                <input type="hidden" name="project_type" value="{{ project_type_val }}">
+                <input type="hidden" name="has_design" value="{{ has_design_val }}">
+                <input type="hidden" name="action" value="email">
+                <input type="email" name="email" placeholder="Your Email" required style="flex: 1; padding: 10px 16px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-primary); color: white;">
+                <button type="submit" class="btn btn-primary" style="white-space: nowrap; display: flex; align-items: center; gap: 8px;">
+                    <i data-lucide="mail" style="width: 18px;"></i> {% trans "Send" %}
+                </button>
+            </form>
+        </div>
+        <div id="pdf-email-result"></div>
     </div>
     
     <div style="margin-top: 32px; text-align: center;">

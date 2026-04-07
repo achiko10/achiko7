@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% load i18n static %}
 
-{% block title %}{{ project.title }} | Zeniti{% endblock %}
+{% block title %}{{ project.title }} | Zenith{% endblock %}
 
 {% block og_title %}{{ project.title }}{% endblock %}
-{% block og_description %}{{ project.description|truncatewords:20 }}{% endblock %}
-{% block og_image %}{% if project.image %}{{ request.scheme }}://{{ request.get_host }}{{ project.image.url }}{% else %}https://zeniti.tech/static/images/og-image.jpg{% endif %}{% endblock %}
+{% block og_description %}{{ project.description|striptags|truncatewords:20 }}{% endblock %}
+{% block og_image %}{% if project.image %}{{ request.scheme }}://{{ request.get_host }}{{ project.image.url }}{% else %}https://zenith.tech/static/images/og-image.jpg{% endif %}{% endblock %}
 
 {% block content %}
 <section class="fade-in" style="padding-top: 40px;">
@@ -46,7 +46,7 @@
                         <h3 style="margin-bottom: 16px; color: var(--text-primary); display: flex; align-items: center; gap: 8px;">
                             <i data-lucide="info" style="color: var(--accent-color);"></i> {% trans "Overview" %}
                         </h3>
-                        <p style="color: var(--text-secondary); line-height: 1.8;">{{ project.description }}</p>
+                        <div style="color: var(--text-secondary); line-height: 1.8;">{{ project.description|safe }}</div>
                     </div>
 
                     <div style="display: flex; flex-direction: column; gap: 32px;">
@@ -56,7 +56,7 @@
                                 <i data-lucide="alert-circle" style="color: #ef4444; width: 20px;"></i>
                                 {% trans "Problem" %}
                             </h3>
-                            <p style="color: var(--text-secondary);">{{ project.problem }}</p>
+                            <div style="color: var(--text-secondary);">{{ project.problem|safe }}</div>
                         </div>
                         {% endif %}
 
@@ -66,7 +66,7 @@
                                 <i data-lucide="lightbulb" style="color: #f59e0b; width: 20px;"></i>
                                 {% trans "Solution" %}
                             </h3>
-                            <p style="color: var(--text-secondary);">{{ project.solution }}</p>
+                            <div style="color: var(--text-secondary);">{{ project.solution|safe }}</div>
                         </div>
                         {% endif %}
 
@@ -76,7 +76,7 @@
                                 <i data-lucide="trending-up" style="width: 20px;"></i>
                                 {% trans "Result" %}
                             </h3>
-                            <p style="color: var(--text-primary); font-weight: 500;">{{ project.result }}</p>
+                            <div style="color: var(--text-primary); font-weight: 500;">{{ project.result|safe }}</div>
                         </div>
                         {% endif %}
                     </div>

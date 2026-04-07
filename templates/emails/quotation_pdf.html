@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Zenith Quotation</title>
+    <style>
+        @page {
+            size: a4;
+            margin: 2cm;
+            @frame footer {
+                -pdf-frame-content: footerContent;
+                bottom: 1cm;
+                margin-left: 2cm;
+                margin-right: 2cm;
+                height: 1cm;
+            }
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            color: #333333;
+        }
+        .header {
+            border-bottom: 2px solid #00ff88;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            color: #111111;
+            margin: 0;
+            font-size: 28px;
+        }
+        .header p {
+            margin: 5px 0 0 0;
+            color: #666666;
+            font-size: 12px;
+        }
+        h2 {
+            color: #222222;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .box {
+            background-color: #f9f9f9;
+            border: 1px solid #eeeeee;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #dddddd;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+            color: #555555;
+            font-weight: bold;
+        }
+        .total-row {
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .total-row td {
+            border-top: 2px solid #333333;
+            border-bottom: none;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 5px;
+            color: #444444;
+        }
+        .footer-text {
+            color: #888888;
+            font-size: 11px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <table style="width: 100%; border: none; margin: 0; padding: 0;">
+            <tr>
+                <td style="border: none; width: 60%;">
+                    <h1>ZENITH.</h1>
+                    <p>High-Precision Development Services</p>
+                </td>
+                <td style="border: none; text-align: right; width: 40%;">
+                    <p><strong>Quotation #{{ date|date:"YmdHi" }}</strong></p>
+                    <p>Date: {{ date|date:"d M Y" }}</p>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Intro -->
+    <div style="margin-bottom: 30px;">
+        <p>Dear Client{% if email %} ({{ email }}){% endif %},</p>
+        <p>Thank you for considering Zenith for your project. Based on the preliminary parameters you selected, we are pleased to present the following formal estimate.</p>
+    </div>
+
+    <!-- Details Box -->
+    <div class="box">
+        <h2>Project Overview</h2>
+        <table style="border: none;">
+            <tr>
+                <td style="border: none; width: 30%; color: #666;"><strong>Service Type:</strong></td>
+                <td style="border: none; width: 70%;">{{ service_name }}</td>
+            </tr>
+            <tr>
+                <td style="border: none; color: #666;"><strong>Design Status:</strong></td>
+                <td style="border: none;">{{ design_note }}</td>
+            </tr>
+            <tr>
+                <td style="border: none; color: #666;"><strong>Estimated Timeline:</strong></td>
+                <td style="border: none;"><strong>{{ time }}</strong></td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Features -->
+    <div>
+        <h2>Included Features & Phases</h2>
+        <ul>
+            {% for feature in features %}
+                <li>{{ feature }}</li>
+            {% endfor %}
+            <li>Direct communication and project updates</li>
+        </ul>
+    </div>
+
+    <!-- Budgets -->
+    <table style="margin-top: 30px;">
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th style="text-align: right;">Estimated Investment</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Core Implementation (Architecture, Development, QA)</td>
+                <td style="text-align: right;">Included</td>
+            </tr>
+            <tr class="total-row">
+                <td style="text-align: right; padding-top: 15px;">TOTAL BUDGET:</td>
+                <td style="text-align: right; color: #00aa55; font-size: 18px; padding-top: 15px;">{{ budget }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div style="margin-top: 40px;">
+        <p><em>* Note: This is an automatically generated preliminary quotation. Final costs and timelines will be confirmed after a detailed discovery meeting and technical specification document.</em></p>
+        <p>To proceed, please reply to our email or schedule a consultation call.</p>
+        <br><br>
+        <p>Best regards,<br><strong>Achiko Mgebrishvili</strong><br>Lead Developer @ Zenith</p>
+    </div>
+
+    <!-- Footer for PDF Pages -->
+    <div id="footerContent">
+        <p class="footer-text">
+            Zenith Portfolio &copy; {{ date|date:"Y" }} | contact: form@zenith.tech <pdf:pagenumber> / <pdf:pagecount>
+        </p>
+    </div>
+</body>
+</html>

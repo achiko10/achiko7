@@ -18,7 +18,7 @@
                 <span class="t-badge">Scalable</span>
             </div>
             
-            <h1 class="hero-title">{% trans "Zeniti" %}</h1>
+            <h1 class="hero-title">{% trans "Zenith" %}</h1>
             <h2 class="hero-subtitle">
                 {% trans "Innovative Full-stack & Mobile Solutions" %}
             </h2>
@@ -107,6 +107,42 @@
         </div>
     </div>
 </section>
+
+<!-- ============================================================
+     TESTIMONIALS SECTION — კლიენტების შეფასებები
+     ============================================================ -->
+{% if testimonials %}
+<section style="padding: 80px 0; background: var(--bg-primary); border-top: 1px solid var(--border-color);">
+    <div class="container">
+        <div class="section-head">
+            <p style="font-size:0.8rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent-color);font-weight:700;margin-bottom:8px;">Social Proof</p>
+            <h2>{% trans "What Clients Say" %}</h2>
+            <p style="color:var(--text-secondary);">{% trans "Real feedback from real projects" %}</p>
+        </div>
+
+        <div class="grid grid-3" style="gap: 24px; margin-top: 48px;">
+            {% for t in testimonials %}
+            <div style="background:var(--card-bg);border:1px solid var(--border-color);border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:16px;transition:var(--transition);">
+                <p style="color:var(--text-secondary);font-size:1rem;line-height:1.7;font-style:italic;">"{{ t.text }}"</p>
+                <div style="display:flex;align-items:center;gap:12px;margin-top:auto;">
+                    {% if t.avatar %}
+                    <img src="{{ t.avatar.url }}" alt="{{ t.client_name }}" style="width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid var(--accent-color);">
+                    {% else %}
+                    <div style="width:44px;height:44px;border-radius:50%;background:var(--accent-color);display:flex;align-items:center;justify-content:center;font-weight:700;color:#000;font-size:1.1rem;">{{ t.client_name|first }}</div>
+                    {% endif %}
+                    <div>
+                        <div style="font-weight:600;color:var(--text-primary);">{{ t.client_name }}</div>
+                        {% if t.position or t.company %}
+                        <div style="font-size:0.8rem;color:var(--text-secondary);">{% if t.position %}{{ t.position }}{% endif %}{% if t.position and t.company %} · {% endif %}{% if t.company %}{{ t.company }}{% endif %}</div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
 
 <script>
 // ============================================================

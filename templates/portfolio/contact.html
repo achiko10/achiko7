@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load i18n static %}
 
-{% block title %}{% trans "Contact" %} | Zeniti{% endblock %}
+{% block title %}{% trans "Contact" %} | Zenith{% endblock %}
 
 {% block content %}
 <section class="fade-in">
@@ -29,6 +29,10 @@
                         <div class="form-group">
                             <label>{% trans "Email" %}</label>
                             <input type="email" name="email" required placeholder="john@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label>{% trans "ტელეფონის ნომერი" %}</label>
+                            <input type="tel" name="phone" required placeholder="+995 555 123 456">
                         </div>
                         <div class="form-group">
                             <label>{% trans "What would you like to do?" %}</label>
@@ -71,6 +75,10 @@
                         <div class="form-group">
                             <label>{% trans "ელ-ფოსტა" %}</label>
                             <input type="email" name="email" required placeholder="john@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label>{% trans "ტელეფონის ნომერი" %}</label>
+                            <input type="tel" name="phone" required placeholder="+995 555 123 456">
                         </div>
                         <div class="form-group">
                             <label>{% trans "Select Date" %}</label>
@@ -169,9 +177,9 @@
                         {% if LANGUAGE_CODE == 'en' and faq.question_en %}{{ faq.question_en }}{% else %}{{ faq.question }}{% endif %}
                         <i data-lucide="chevron-down" style="width: 20px; color: var(--text-secondary);"></i>
                     </summary>
-                    <p style="margin-top: 16px; color: var(--text-secondary); line-height: 1.6;">
-                        {% if LANGUAGE_CODE == 'en' and faq.answer_en %}{{ faq.answer_en }}{% else %}{{ faq.answer }}{% endif %}
-                    </p>
+                    <div style="margin-top: 16px; color: var(--text-secondary); line-height: 1.6;">
+                        {% if LANGUAGE_CODE == 'en' and faq.answer_en %}{{ faq.answer_en|safe }}{% else %}{{ faq.answer|safe }}{% endif %}
+                    </div>
                 </details>
                 {% empty %}
                 <p style="text-align: center;">FAQ ინფორმაცია ჯერ არ არის.</p>

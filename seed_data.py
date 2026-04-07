@@ -2,7 +2,7 @@ import os
 import django
 from django.utils.text import slugify
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'zeniti.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'zenith.settings')
 django.setup()
 
 from portfolio.models import Project, Service, FAQ

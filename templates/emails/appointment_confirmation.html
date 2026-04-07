@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Appointment Request Confirmation</title>
+</head>
+<body style="font-family: 'Inter', sans-serif; background: #f0f2f5; padding: 40px 20px;">
+    <div style="max-width: 600px; margin: 0 auto; background: #ffffff; padding: 32px; border-radius: 12px; border-top: 4px solid #4361ee; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+        <h2 style="color: #1e293b; margin-top: 0;">Hello {{ name }},</h2>
+        <p style="color: #475569; font-size: 16px; line-height: 1.6;">
+            Your meeting request has been submitted successfully! We have reserved the following time slot for you:
+        </p>
+        <div style="background: #f8fafc; padding: 16px; border-radius: 8px; margin: 24px 0; border: 1px solid #e2e8f0;">
+            <p style="margin: 4px 0; color: #1e293b;"><strong>Date:</strong> {{ date }}</p>
+            <p style="margin: 4px 0; color: #1e293b;"><strong>Time:</strong> {{ time }}</p>
+        </div>
+        <p style="color: #475569; font-size: 16px; line-height: 1.6;">
+            <strong>Note:</strong> This is a pending request. We will review our schedule and contact you shortly to confirm the meeting.
+        </p>
+        <p style="color: #475569; font-size: 16px; line-height: 1.6; margin-top: 32px;">
+            Best regards,<br>
+            <strong>Zenith Team</strong>
+        </p>
+    </div>
+</body>
+</html>
